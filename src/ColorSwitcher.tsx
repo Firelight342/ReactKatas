@@ -16,17 +16,24 @@ function numToString(input: number): string {
   return ""
 }
 
-interface ColorSwitcherState {
+interface CSState {
   bgCounter: number,
   tCounter: number
 }
 
-export class ColorSwitcher extends React.Component<any, ColorSwitcherState>{
-  constructor(props: any) {
+
+interface CSProps {
+  bgColor: number,
+  fgColor?: number
+  incrementCounter: () => void;
+}
+
+export class ColorSwitcher extends React.Component<CSProps, CSState>{
+  constructor(props: CSProps) {
     super(props);
     this.state = {
-      bgCounter: 0,
-      tCounter: 1
+      bgCounter: props.bgColor,
+      tCounter: props.fgColor || 1
     }
   }
   render() {
@@ -36,8 +43,16 @@ export class ColorSwitcher extends React.Component<any, ColorSwitcherState>{
     return (
       <div style={style}>
         <h1>Color Switcher</h1>
-        <div style={{ border: "1px solid black", backgroundColor: "grey", width: "100px" }} onClick={() => this.setState({ bgCounter: this.state.bgCounter + 1 })}>Switch Background Color</div>
-        <button onClick={() => this.setState({ tCounter: this.state.tCounter + 1 })}>Switch Text Color</button>
+        <div style={{ border: "1px solid black", backgroundColor: "grey", width: "100px" }} 
+             onClick={() => {
+                this.props.incrementCounter();
+                this.setState({ bgCounter: this.state.bgCounter + 1 })
+            }}
+        >Switch Background Color</div>
+        <button onClick={() => {
+            this.props.incrementCounter();
+            this.setState({ tCounter: this.state.tCounter + 1 })
+        }}>Switch Text Color</button>
       </div>
     )
   }

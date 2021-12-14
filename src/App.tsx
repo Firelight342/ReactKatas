@@ -1,20 +1,33 @@
 import React from 'react';
-import { ColorSwitcher } from './ColorSwitcher';
+import { ColorSwitcherGroup } from './ColorSwitcherGroup';
 import { ButtonComponent } from './ButtonComponent';
 import { TodoListClass } from './TodoListClass';
 import './App.css'
 
-function App() {
-  return (
-    <div className="AppRoot">
-      <div>
-        <ColorSwitcher />
-        <ButtonComponent />
-        <TodoListClass />
+interface AppState {
+}
 
+
+export class App extends React.Component<any, AppState>{
+  constructor(props: any) {
+    super(props);
+    this.state = {}
+  }
+
+
+  render() {
+    return (
+      <div className="AppRoot">
+        <div>
+          <ColorSwitcherGroup />
+          <ButtonComponent />
+          <TodoListClass />
+
+        </div>
       </div>
-    </div>
-  );
+    );
+
+  }
 }
 
 export default App;
