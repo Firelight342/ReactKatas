@@ -2,17 +2,20 @@ import React from 'react';
 import { ColorSwitcherGroup } from './ColorSwitcherGroup';
 import { ButtonComponent } from './ButtonComponent';
 import { TodoListClass } from './TodoListClass';
+import { MakeContact } from './MakeContact';
 import './App.css'
 
-// call List with props of an array of strings, that will be rendered inside a <ul>
 
+
+
+// call List with props of an array of strings, that will be rendered inside a <ul>
 interface ListState {
-  items : string[]
+  items: string[]
   inputForm: string
 }
 
 interface ListProps {
-  list : string[]
+  list: string[]
 }
 
 export class List extends React.Component<ListProps, ListState>{
@@ -24,15 +27,15 @@ export class List extends React.Component<ListProps, ListState>{
     }
   }
 
-  render(){
+  render() {
     console.log(this.state)
     return (
       <>
-        <input onChange={(e)=>this.setState({inputForm: e.target.value})} value={this.state.inputForm} type="text"></input>
-        <button onClick={()=>this.setState({items: [...this.state.items, this.state.inputForm], inputForm:""})}>Add</button>
+        <input onChange={(e) => this.setState({ inputForm: e.target.value })} value={this.state.inputForm} type="text"></input>
+        <button onClick={() => this.setState({ items: [...this.state.items, this.state.inputForm], inputForm: "" })}>Add</button>
 
         <ul>
-          { this.state.items.map((item: string) => {
+          {this.state.items.map((item: string) => {
             return (<li>{item}</li>)
           })}
         </ul>
@@ -55,7 +58,8 @@ export class App extends React.Component<any, AppState>{
     return (
       <div className="AppRoot">
         <div>
-          <List list={["a","b"]}/>
+          <MakeContact />
+          <List list={["a", "b"]} />
           <ColorSwitcherGroup />
           <ButtonComponent />
           <TodoListClass />
