@@ -1,69 +1,15 @@
 import React from 'react';
-import { ColorSwitcherGroup } from './ColorSwitcherGroup';
-import { ButtonComponent } from './ButtonComponent';
-import { TodoListClass } from './TodoListClass';
-import { MakeContact } from './MakeContact';
 import './App.css'
+import ContactList from './ContactList';
 
 
-
-
-// call List with props of an array of strings, that will be rendered inside a <ul>
-interface ListState {
-  items: string[]
-  inputForm: string
-}
-
-interface ListProps {
-  list: string[]
-}
-
-export class List extends React.Component<ListProps, ListState>{
-  constructor(props: ListProps) {
-    super(props);
-    this.state = {
-      items: props.list,
-      inputForm: ""
-    }
-  }
-
-  render() {
-    console.log(this.state)
-    return (
-      <>
-        <input onChange={(e) => this.setState({ inputForm: e.target.value })} value={this.state.inputForm} type="text"></input>
-        <button onClick={() => this.setState({ items: [...this.state.items, this.state.inputForm], inputForm: "" })}>Add</button>
-
-        <ul>
-          {this.state.items.map((item: string) => {
-            return (<li>{item}</li>)
-          })}
-        </ul>
-      </>
-    )
-  }
-}
-
-interface AppState {
-}
-
-export class App extends React.Component<any, AppState>{
-  constructor(props: any) {
-    super(props);
-    this.state = {}
-  }
-
+export class App extends React.Component<any, any>{
 
   render() {
     return (
       <div className="AppRoot">
         <div>
-          <MakeContact />
-          <List list={["a", "b"]} />
-          <ColorSwitcherGroup />
-          <ButtonComponent />
-          <TodoListClass />
-
+          <ContactList />
         </div>
       </div>
     );

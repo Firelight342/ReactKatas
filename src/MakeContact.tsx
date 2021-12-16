@@ -1,14 +1,18 @@
 import React from 'react';
 import './App.css'
 
-interface State {
+export interface Contact {
     firstName: string
     lastName: string
     email: string
 }
 
-export class MakeContact extends React.Component<any, State>{
-    constructor(props: any) {
+interface Props {
+    makeContact: (contact: Contact) => void;
+}
+
+export class MakeContact extends React.Component<Props, Contact>{
+    constructor(props: Props) {
         super(props);
         this.state = {
             firstName: "",
@@ -17,23 +21,34 @@ export class MakeContact extends React.Component<any, State>{
         }
     }
 
-    makeInput(key: keyof State, lableText: string) {
+    makeInput(key: keyof Contact, lableText: string) {
         return (
             <div>
                 <label htmlFor={key} style={{ fontWeight: "bold" }} >{lableText + ":  "}</label>
                 <input
                     id={key}
-                    onChange={(e) => this.setState({ [key]: e.target.value } as Pick<State, keyof State>)}
+                    onChange={(e) => this.setState({ [key]: e.target.value } as Pick<Contact, keyof Contact>)}
                     value={this.state[key]}
-                    type="text"/>
+                    type="text" />
+
             </div>)
     }
+
     render() {
+        var allowMakeContact = (this.state.firstName != ""
+            && this.state.lastName != ""
+            && this.state.email != "");
+
         return (
             <>
                 {this.makeInput('firstName', "First Name")}
                 {this.makeInput('lastName', "Last Name")}
                 {this.makeInput('email', "Email")}
+                <button disabled={!allowMakeContact} onClick={() => {
+                    this.props.makeContact(this.state);
+                    this.setState({ firstName: "", lastName: "", email: "" })
+                }
+                }>Add</button>
             </>
         )
     }

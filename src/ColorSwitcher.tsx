@@ -5,10 +5,10 @@ function numToString(input: number): string {
     return "red"
   }
   if (input % 4 === 1) {
-    return "orange"
+    return "purple"
   }
   if (input % 4 === 2) {
-    return "yellow"
+    return "cyan"
   }
   if (input % 4 === 3) {
     return "green"
@@ -20,7 +20,6 @@ interface CSState {
   bgCounter: number,
   tCounter: number
 }
-
 
 interface CSProps {
   bgColor: number,
