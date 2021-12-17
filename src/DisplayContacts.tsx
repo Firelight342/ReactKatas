@@ -14,7 +14,9 @@ export class DisplayContacts extends React.Component<DisplayContactProps, any>{
                     return (<li>{contact.firstName
                         + " " + contact.lastName
                         + " " + contact.email}
-                        <button style={{ marginLeft: "15px" }} onClick={() => this.props.removeLine(contact)}>Remove</button>
+                        <button style={{ marginLeft: "15px" }}
+                            onClick={() => this.props.removeLine(contact)}
+                        >Remove</button>
                     </li>)
                 })}
             </ul>

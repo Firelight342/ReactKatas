@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css'
 import ContactList from './ContactList';
+import { LotrWiki } from './LotrWiki';
 
 
 export class App extends React.Component<any, any>{
@@ -9,7 +10,8 @@ export class App extends React.Component<any, any>{
     return (
       <div className="AppRoot">
         <div>
-          <ContactList />
+          <img src = "./Aragorn_profile.webp" style={{height: "200px"}}></img>
+          <LotrWiki />
         </div>
       </div>
     );

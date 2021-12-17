@@ -27,7 +27,8 @@ export class MakeContact extends React.Component<Props, Contact>{
                 <label htmlFor={key} style={{ fontWeight: "bold" }} >{lableText + ":  "}</label>
                 <input
                     id={key}
-                    onChange={(e) => this.setState({ [key]: e.target.value } as Pick<Contact, keyof Contact>)}
+                    onChange={(e) => this.setState(
+                        { [key]: e.target.value } as Pick<Contact, keyof Contact>)}
                     value={this.state[key]}
                     type="text" />
 
