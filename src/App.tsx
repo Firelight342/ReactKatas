@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css'
 import ContactList from './ContactList';
+import { LotrCharacterDisplay } from './ImageDisplay';
 import { LotrWiki } from './LotrWiki';
 
 
@@ -10,8 +11,9 @@ export class App extends React.Component<any, any>{
     return (
       <div className="AppRoot">
         <div>
-          <img src = "./Aragorn_profile.webp" style={{height: "200px"}}></img>
+          <LotrCharacterDisplay />
           <LotrWiki />
+
         </div>
       </div>
     );
@@ -33,3 +35,11 @@ export default App;
 // <button></button> button
 // <ul><li>test</li></ul> unorderd list with list item inside called "test"
 // <></>  empty fragment
+
+// { /* COMMENT */ } 
+/* 
+{
+  // COMMENT
+} 
+{ false && <CommentedOutComponent /> }
+*/

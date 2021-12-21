@@ -16,7 +16,8 @@ export class InputAndLabel extends React.Component<InputAndLabelProps, any> {
     render(): React.ReactNode {
         return (
             <div>
-                <label htmlFor={this.props.id} style={{ fontWeight: "bold" }} >{this.props.labelText + ":  "}</label>
+                <label htmlFor={this.props.id} style={{ fontWeight: "bold" }} >
+                    {this.props.labelText + ":  "}</label>
                 <input
                     id={this.props.id}
                     onChange={(e) => this.props.onChange(e.target.value)}
