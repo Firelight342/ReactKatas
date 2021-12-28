@@ -13,7 +13,6 @@ export interface LotrWikiState {
     CharList: LotrCharacter[]
 }
 
-
 export class LotrWiki extends React.Component<any, LotrWikiState>{
     constructor(props: any) {
         super(props);
