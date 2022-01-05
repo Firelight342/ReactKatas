@@ -3,7 +3,10 @@ import './App.css'
 import ContactList from './ContactList';
 import { LotrCharacterDisplay } from './ImageDisplay';
 import { LotrWiki } from './LotrWiki';
+<<<<<<< HEAD
 import { PokerComponent } from './CardLibrary/PokerComponent';
+=======
+>>>>>>> 92bd7513b9525f0116fef9b11171b121d5beda81
 import { ShoppingList } from './ShoppingList';
 
 
@@ -13,8 +16,13 @@ export class App extends React.Component<any, any>{
     return (
       <div className="AppRoot">
         <div>
+<<<<<<< HEAD
           
           <ShoppingList/>
+=======
+          <ShoppingList />
+        
+>>>>>>> 92bd7513b9525f0116fef9b11171b121d5beda81
 
         </div>
       </div>

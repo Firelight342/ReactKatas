@@ -1,12 +1,23 @@
+<<<<<<< HEAD
 import React from "react";
 import { InputAndLabel } from "./InputAndLabel";
+=======
+import React from 'react';
+import { InputAndLabel } from './InputAndLabel';
+
+>>>>>>> 92bd7513b9525f0116fef9b11171b121d5beda81
 
 export interface ListState {
     item: string
     amount: string
     price: string
+<<<<<<< HEAD
  }
  export class ShoppingList extends React.Component<any, ListState>{
+=======
+}
+export class ShoppingList extends React.Component<any, ListState>{
+>>>>>>> 92bd7513b9525f0116fef9b11171b121d5beda81
     constructor(props: any) {
         super(props);
         this.state = {
@@ -15,7 +26,11 @@ export interface ListState {
             price: ""
         }
     }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 92bd7513b9525f0116fef9b11171b121d5beda81
     render(): React.ReactNode {
         return (
             <>
@@ -38,4 +53,8 @@ export interface ListState {
             </>
         )
     }
+<<<<<<< HEAD
  }
+=======
+}
+>>>>>>> 92bd7513b9525f0116fef9b11171b121d5beda81
