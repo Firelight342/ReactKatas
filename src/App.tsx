@@ -4,6 +4,7 @@ import ContactList from './ContactList';
 import { LotrCharacterDisplay } from './ImageDisplay';
 import { LotrWiki } from './LotrWiki';
 import { PokerComponent } from './CardLibrary/PokerComponent';
+import { ShoppingList } from './ShoppingList';
 
 
 export class App extends React.Component<any, any>{
@@ -13,7 +14,7 @@ export class App extends React.Component<any, any>{
       <div className="AppRoot">
         <div>
           
-          <PokerComponent />
+          <ShoppingList/>
 
         </div>
       </div>
