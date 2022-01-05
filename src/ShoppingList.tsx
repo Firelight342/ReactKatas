@@ -1,36 +1,27 @@
-<<<<<<< HEAD
 import React from "react";
 import { InputAndLabel } from "./InputAndLabel";
-=======
-import React from 'react';
-import { InputAndLabel } from './InputAndLabel';
 
->>>>>>> 92bd7513b9525f0116fef9b11171b121d5beda81
-
+export interface ListItem {
+    item: string
+    amount: string
+    price: string
+}
 export interface ListState {
     item: string
     amount: string
     price: string
-<<<<<<< HEAD
- }
- export class ShoppingList extends React.Component<any, ListState>{
-=======
+    items: ListItem[]
 }
 export class ShoppingList extends React.Component<any, ListState>{
->>>>>>> 92bd7513b9525f0116fef9b11171b121d5beda81
     constructor(props: any) {
         super(props);
         this.state = {
             item: "",
             amount: "",
-            price: ""
+            price: "",
+            items: []
         }
     }
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> 92bd7513b9525f0116fef9b11171b121d5beda81
     render(): React.ReactNode {
         return (
             <>
@@ -50,11 +41,39 @@ export class ShoppingList extends React.Component<any, ListState>{
                     id='price'
                     value={this.state.price}
                     onChange={(text) => this.setState({ price: text })} />
+
+                <button onClick={() => {
+                    this.setState({
+                        item: "", amount: "", price: "",
+                        items: [...this.state.items,
+                        {
+                            item: this.state.item,
+                            amount: this.state.amount,
+                            price: this.state.price
+                        }]
+                    })
+                }}>Add to Table</button>
+
+                <table>
+                    <tr>
+                        <th>Ingredients</th>
+                        <th>Amount</th>
+                        <th>Price</th>
+                    </tr>
+
+                    {this.state.items.map(item => {
+                        return (<tr key={item.item}>
+                            <td>{item.item}</td>
+                            <td>{item.amount}</td>
+                            <td>{item.price}</td>
+
+                        </tr>)
+                    }
+
+                    )}
+
+                </table>
             </>
         )
     }
-<<<<<<< HEAD
- }
-=======
 }
->>>>>>> 92bd7513b9525f0116fef9b11171b121d5beda81
