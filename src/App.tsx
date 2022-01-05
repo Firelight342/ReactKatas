@@ -3,6 +3,7 @@ import './App.css'
 import ContactList from './ContactList';
 import { LotrCharacterDisplay } from './ImageDisplay';
 import { LotrWiki } from './LotrWiki';
+import { PokerComponent } from './CardLibrary/PokerComponent';
 
 
 export class App extends React.Component<any, any>{
@@ -11,8 +12,8 @@ export class App extends React.Component<any, any>{
     return (
       <div className="AppRoot">
         <div>
-          <LotrCharacterDisplay />
-          <LotrWiki />
+          
+          <PokerComponent />
 
         </div>
       </div>
@@ -22,6 +23,9 @@ export class App extends React.Component<any, any>{
 }
 
 export default App;
+
+//<LotrCharacterDisplay />
+//<LotrWiki />
 
 // JSX
 // state
