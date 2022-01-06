@@ -14,7 +14,7 @@ export class App extends React.Component<any, any>{
       <div className="AppRoot">
         <div>
           <ShoppingList />
-        
+
 
         </div>
       </div>
@@ -30,12 +30,12 @@ export default App;
 
 // JSX
 // state
-// props 
+// props
 
 // <h1></h1> header 1
 // <h2></h2> header 2
 // <h3></h3> header 3
-// <div></div> horizontal divider 
+// <div></div> horizontal divider
 // <span></span> style text
 // <button></button> button
 // <ul><li>test</li></ul> unorderd list with list item inside called "test"
