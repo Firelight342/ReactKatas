@@ -6,13 +6,10 @@ export interface ListItem {
     amount: number
     price: number
 }
-export interface ListState {
-    item: string
-    amount: number
-    price: number
+export interface ListState extends ListItem {
     items: ListItem[]
-    finalPrice: number[]
 }
+
 export class ShoppingList extends React.Component<any, ListState>{
     constructor(props: any) {
         super(props);
@@ -21,7 +18,6 @@ export class ShoppingList extends React.Component<any, ListState>{
             amount: 5,
             price: 10,
             items: [],
-            finalPrice: []
         }
     }
     render(): React.ReactNode {
@@ -29,6 +25,7 @@ export class ShoppingList extends React.Component<any, ListState>{
             && this.state.amount !== 0
             && this.state.price !== 0);
 
+        let finalPrice = this.state.items.reduce((acc, next) => acc + (next.amount * next.price), 0);
         return (
             <>
                 <h1>Shopping List</h1>
@@ -58,10 +55,6 @@ export class ShoppingList extends React.Component<any, ListState>{
                             price: this.state.price
                         }]
                     });
-                    this.setState({
-                        finalPrice: [...this.state.finalPrice,
-                        this.state.amount * this.state.price]
-                    })
                 }}>Add to Table</button>
 
                 <table>
@@ -71,11 +64,20 @@ export class ShoppingList extends React.Component<any, ListState>{
                         <th>Price</th>
                     </tr>
 
-                    {this.state.items.map(item => {
+                    {this.state.items.map((item, index) => {
                         return (
                             <tr key={item.item}>
                                 <td>{item.item}</td>
-                                <td>{item.amount}</td>
+                                <td>
+                                    <input type={"number"}
+                                        value={item.amount}
+                                        onChange={(e) => {
+                                            let value = parseInt(e.target.value);
+                                            this.state.items[index].amount = value;
+                                            this.setState({ items: this.state.items });
+                                        }}>
+                                    </input>
+                                </td>
                                 <td>${item.price}</td>
                             </tr>)
                     }
@@ -83,13 +85,7 @@ export class ShoppingList extends React.Component<any, ListState>{
                     <tr>
                         <td></td>
                         <td></td>
-                        <td style={{ fontWeight: "bold" }}> ${this.state.finalPrice.reduce((acc: any, next) => {
-                            acc = acc + next;
-                            return acc;
-                        }, 0)
-                        }
-                        </td>
-
+                        <td style={{ fontWeight: "bold" }}> ${finalPrice}</td>
                     </tr>
                 </table>
             </>
