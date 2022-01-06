@@ -1,15 +1,15 @@
 import React from "react";
-import { InputAndLabel } from "./InputAndLabel";
+import { InputAndLabel, InputAndLabelWithNumbers } from "./InputAndLabel";
 
 export interface ListItem {
     item: string
-    amount: string
-    price: string
+    amount: number
+    price: number
 }
 export interface ListState {
     item: string
-    amount: string
-    price: string
+    amount: number
+    price: number
     items: ListItem[]
     finalPrice: number[]
 }
@@ -18,16 +18,16 @@ export class ShoppingList extends React.Component<any, ListState>{
         super(props);
         this.state = {
             item: "Eggs",
-            amount: "5",
-            price: "10",
+            amount: 5,
+            price: 10,
             items: [],
             finalPrice: []
         }
     }
     render(): React.ReactNode {
         var allowItem = (this.state.item !== ""
-            && this.state.amount !== ""
-            && this.state.price !== "");
+            && this.state.amount !== 0
+            && this.state.price !== 0);
 
         return (
             <>
@@ -37,12 +37,12 @@ export class ShoppingList extends React.Component<any, ListState>{
                     id='ingredients'
                     value={this.state.item}
                     onChange={(text) => this.setState({ item: text })} />
-                <InputAndLabel
+                <InputAndLabelWithNumbers
                     labelText='Amount'
                     id='amount'
                     value={this.state.amount}
                     onChange={(text) => this.setState({ amount: text })} />
-                <InputAndLabel
+                <InputAndLabelWithNumbers
                     labelText='Price'
                     id='price'
                     value={this.state.price}
@@ -50,7 +50,7 @@ export class ShoppingList extends React.Component<any, ListState>{
 
                 <button disabled={!allowItem} onClick={() => {
                     this.setState({
-                        item: "", amount: "", price: "",
+                        item: "", amount: 0, price: 0,
                         items: [...this.state.items,
                         {
                             item: this.state.item,
@@ -60,7 +60,7 @@ export class ShoppingList extends React.Component<any, ListState>{
                     });
                     this.setState({
                         finalPrice: [...this.state.finalPrice,
-                        parseInt(this.state.amount) * parseInt(this.state.price)]
+                        this.state.amount * this.state.price]
                     })
                 }}>Add to Table</button>
 
