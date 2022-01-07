@@ -3,6 +3,7 @@ import React from 'react';
 
 interface LabelProps {
     labelText: string
+    errorMessage?: string | false
     id: string
 }
 
@@ -13,6 +14,7 @@ class LabelWrapper extends React.Component<LabelProps, any> {
                 <label htmlFor={this.props.id} style={{ fontWeight: "bold" }} >
                     {this.props.labelText + ":  "}</label>
                 {this.props.children}
+                {this.props.errorMessage && <span style={{ color: "red" }}>*{this.props.errorMessage}</span>}
             </div>)
     }
 }
@@ -29,7 +31,7 @@ export interface InputAndLabelProps<T> extends LabelProps {
 export class InputAndLabelWithNumbers extends React.Component<InputAndLabelProps<number>, any> {
     render(): React.ReactNode {
         return (
-            <LabelWrapper id={this.props.id} labelText={this.props.labelText} >
+            <LabelWrapper id={this.props.id} labelText={this.props.labelText} errorMessage={this.props.errorMessage}>
                 <input
                     id={this.props.id}
                     onChange={(e) => this.props.onChange(parseInt(e.target.value))}
@@ -43,7 +45,7 @@ export class InputAndLabelWithNumbers extends React.Component<InputAndLabelProps
 export class InputAndLabel extends React.Component<InputAndLabelProps<string>, any> {
     render(): React.ReactNode {
         return (
-            <LabelWrapper id={this.props.id} labelText={this.props.labelText} >
+            <LabelWrapper id={this.props.id} labelText={this.props.labelText} errorMessage={this.props.errorMessage}>
                 <input
                     id={this.props.id}
                     onChange={(e) => this.props.onChange(e.target.value)}

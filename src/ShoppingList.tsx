@@ -1,4 +1,5 @@
 import React from "react";
+import { isTemplateSpan } from "typescript";
 import { InputAndLabel, InputAndLabelWithNumbers } from "./InputAndLabel";
 
 export interface ListItem {
@@ -21,9 +22,10 @@ export class ShoppingList extends React.Component<any, ListState>{
         }
     }
     render(): React.ReactNode {
-        var allowItem = (this.state.item !== ""
-            && this.state.amount !== 0
-            && this.state.price !== 0);
+        var isIngredientValid = this.state.item !== "";
+        var isAmountValid = this.state.amount !== 0;
+        var isPriceValid = this.state.price !== 0;
+        var allowItem = (isIngredientValid && isAmountValid && isPriceValid);
 
         let finalPrice = this.state.items.reduce((acc, next) => acc + (next.amount * next.price), 0);
         return (
@@ -32,19 +34,22 @@ export class ShoppingList extends React.Component<any, ListState>{
                 <InputAndLabel
                     labelText='Ingredients'
                     id='ingredients'
+                    errorMessage={!isIngredientValid && "cannot be left blank"}
                     value={this.state.item}
                     onChange={(text) => this.setState({ item: text })} />
+
                 <InputAndLabelWithNumbers
                     labelText='Amount'
                     id='amount'
+                    errorMessage={!isAmountValid && "must be greater than 0"}
                     value={this.state.amount}
                     onChange={(text) => this.setState({ amount: text })} />
                 <InputAndLabelWithNumbers
                     labelText='Price'
                     id='price'
+                    errorMessage={!isPriceValid && "must be greater than 0"}
                     value={this.state.price}
                     onChange={(text) => this.setState({ price: text })} />
-
                 <button disabled={!allowItem} onClick={() => {
                     this.setState({
                         item: "", amount: 0, price: 0,
@@ -62,6 +67,7 @@ export class ShoppingList extends React.Component<any, ListState>{
                         <th>Ingredients</th>
                         <th>Amount</th>
                         <th>Price</th>
+
                     </tr>
 
                     {this.state.items.map((item, index) => {
@@ -78,8 +84,25 @@ export class ShoppingList extends React.Component<any, ListState>{
                                         }}>
                                     </input>
                                 </td>
-                                <td>${item.price}</td>
+                                <td>$ <input type={"number"}
+                                    value={item.price}
+                                    onChange={(e) => {
+                                        let value = parseInt(e.target.value);
+                                        this.state.items[index].price = value;
+                                        this.setState({ items: this.state.items });
+                                    }}>
+                                </input>
+                                </td>
+                                <tr>
+                                    <button onClick={() => {
+                                        // remove from the state array using index
+                                        // setState
+                                        this.state.items.splice(index, 1)
+                                        this.setState({ items: this.state.items })
+                                    }}>Delete</button>
+                                </tr>
                             </tr>)
+
                     }
                     )}
                     <tr>
