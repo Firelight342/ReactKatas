@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css'
 import ContactList from './ContactList';
-import { LotrCharacterDisplay } from './ImageDisplay';
+import { ImageDisplay, LotrCharacterDisplay } from './ImageDisplay';
 import { LotrWiki } from './LotrWiki';
 import { PokerComponent } from './CardLibrary/PokerComponent';
 import { ShoppingList } from './ShoppingList';
-import { DressUpGame } from './DressUpGame';
+import { DressUpGameTryingStuff } from './DressUpGame';
 
 
 export class App extends React.Component<any, any>{
@@ -14,7 +14,7 @@ export class App extends React.Component<any, any>{
     return (
       <div className="AppRoot">
         <div>
-          <DressUpGame />
+          <DressUpGameTryingStuff />
 
 
         </div>

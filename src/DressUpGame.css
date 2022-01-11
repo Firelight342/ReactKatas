@@ -1,0 +1,12 @@
+.smallImg {
+    height: 50px;
+}
+
+.clothesTray {
+    width: 30%;
+}
+
+.clothesTrayImg {
+    height: 50px;
+    border: 1px solid black;
+}
