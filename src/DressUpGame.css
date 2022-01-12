@@ -4,9 +4,17 @@
 
 .clothesTray {
     width: 30%;
+   
+   
 }
 
 .clothesTrayImg {
-    height: 50px;
+    width: 50px;
     border: 1px solid black;
+    
+}
+
+.stage{
+    display: flex;
+    align-items: center;
 }
