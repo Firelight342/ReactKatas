@@ -4,8 +4,6 @@
 
 .clothesTray {
     width: 30%;
-   
-   
 }
 
 .clothesTrayImg {
@@ -16,5 +14,19 @@
 
 .stage{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+}
+
+.blue{
+    filter: invert(42%) sepia(41%) saturate(2971%) hue-rotate(164deg) brightness(99%) contrast(103%);
+}
+.purple{
+    filter: invert(44%) sepia(28%) saturate(4916%) hue-rotate(234deg) brightness(103%) contrast(101%);
+}
+
+.star{
+    position: absolute;
+    top: 10px;
+    left: 250px;
+    flex-wrap: wrap;
 }
