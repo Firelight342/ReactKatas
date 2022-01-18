@@ -6,6 +6,7 @@ import { LotrWiki } from './LotrWiki';
 import { PokerComponent } from './CardLibrary/PokerComponent';
 import { ShoppingList } from './ShoppingList';
 import { DressUpGameTryingStuff } from './DressUpGame';
+import { ColorSwitcher } from './ColorSwitcher';
 
 
 export class App extends React.Component<any, any>{
@@ -15,7 +16,6 @@ export class App extends React.Component<any, any>{
       <div className="AppRoot">
         <div>
           <DressUpGameTryingStuff />
-
 
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './DressUpGame.css'
-import { ColorButtons, displayImgPair } from './DressUpGameButton';
+import { ColorButtons } from './DressUpGameButton';
 
 let hatImgs = ['./Hats/hat1.png', './Hats/hat2.png', './Hats/hat1.png', './Hats/hat2.png',
     './Hats/hat1.png', './Hats/hat2.png', './Hats/hat1.png', './Hats/hat2.png']
@@ -9,7 +9,7 @@ let shirtImgs = ['./Hats/shirt1.png', './Hats/shirt2.png', './Hats/shirt1.png', 
     './Hats/shirt2.png', './Hats/shirt1.png', './Hats/shirt2.png', './Hats/shirt1.png', './Hats/shirt2.png']
 
 let outlineImgs = ['./imgTesting/starLines.png', './imgTesting/polygonLines.png']
-let fillImgs = ['./imgTesting/starColor.png', './imgTesting/polygonColor.png']
+let fillImgs = ['./imgTesting/starColor.png', './imgTesting/starColor.png', './imgTesting/starColor.png']
 let colorButtonImgs = ['./imgTesting/starColor.png', './imgTesting/blue.png', './imgTesting/purple.png']
 
 interface ButtonProps {
@@ -64,6 +64,7 @@ interface DU1State {
 
     outlineUrl: string
     fillUrl: string
+    colorStyle: string
 }
 export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
     constructor(props: any) {
@@ -75,7 +76,8 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             shirtUrl: "",
 
             outlineUrl: "",
-            fillUrl: ""
+            fillUrl: "",
+            colorStyle: ""
         }
     }
 
@@ -112,9 +114,11 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
 
                         <ColorButtons
                             itemName='Color'
-                            buttonUrls={colorButtonImgs}
+                            buttonUrls={fillImgs}
                             colorUrls={fillImgs}
-                            onClick={(url) => this.setState({ fillUrl: url })} />
+                            onClick={(url) => this.setState({ fillUrl: url })}
+
+                        />
 
                     </div>
 
@@ -127,7 +131,10 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                         </div>
 
                         <div>
-                            <img src={this.state.fillUrl} className="smallImg star blue" />
+                            <span>{this.state.colorStyle}</span>
+                            <span>{this.state.fillUrl}</span>
+
+                            <img src={this.state.fillUrl} className="smallImg star purple" />
                             <img src={this.state.outlineUrl} className="smallImg star" />
                         </div>
 

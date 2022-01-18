@@ -1,3 +1,4 @@
+import { count } from 'console';
 import React from 'react';
 import './DressUpGame.css'
 
@@ -5,11 +6,17 @@ interface ButtonProps {
     itemName: string,
     buttonUrls: string[],
     colorUrls: string[],
-    onClick: (imgUrl: string) => void
+    onClick: (imgUrl: string) => void,
 }
 interface ButtonState {
     isTrayOpen: boolean
-    colorTray: boolean
+
+}
+const colorList: any = {
+    0: "blue",
+    1: "purple",
+    2: "grey"
+
 
 }
 export class ColorButtons extends React.Component<ButtonProps, ButtonState>{
@@ -17,12 +24,11 @@ export class ColorButtons extends React.Component<ButtonProps, ButtonState>{
         super(props);
         this.state = {
             isTrayOpen: false,
-            colorTray: false
         }
     }
+
     render(): React.ReactNode {
         var inverse = !this.state.isTrayOpen;
-        var inverseColor = !this.state.colorTray;
         // boolean ? "if true" : "if false"
         return (
             <>
@@ -35,26 +41,25 @@ export class ColorButtons extends React.Component<ButtonProps, ButtonState>{
                         <>
                             <img
                                 src={imgUrl}
-                                className="clothesTrayImg"
-                                onClick={() => this.props.onClick(this.props.colorUrls[index])} />
+                                //className="clothesTrayImg "
+                                onClick={() => {
+                                    this.props.onClick(this.props.colorUrls[index])
+                                }}
+                                /*
+                                onClick={() => {
+                                    this.props.onClick(this.props.colorUrls[index], colorList[index])
+                                }}
+                                */
+                                className={`clothesTrayImg ${colorList[index]} `}
+                            />
+
                         </>
+
                     )
                 })}
+
+
             </>
         );
     }
-}
-
-
-export class displayImgPair extends React.Component<any, any>{
-
-    render(): React.ReactNode {
-        return (
-            <>
-                <img src={this.state.fillUrl} className="smallImg star blue" />
-                <img src={this.state.outlineUrl} className="smallImg star " />
-            </>
-        )
-    }
-
 }
