@@ -1,6 +1,6 @@
 import React from 'react';
 import './DressUpGame.css'
-import { ColorButtons, ShapeButtons } from './DressUpGameButton';
+import { ColorButtons, ShapeButtons, Shape } from './DressUpGameButton';
 
 let hatImgs = ['./Hats/hat1.png', './Hats/hat2.png', './Hats/hat1.png', './Hats/hat2.png',
     './Hats/hat1.png', './Hats/hat2.png', './Hats/hat1.png', './Hats/hat2.png']
@@ -8,9 +8,22 @@ let shirtImgs = ['./Hats/shirt1.png', './Hats/shirt2.png', './Hats/shirt1.png', 
     './Hats/shirt1.png', './Hats/shirt2.png', './Hats/shirt1.png', './Hats/shirt2.png', './Hats/shirt1.png',
     './Hats/shirt2.png', './Hats/shirt1.png', './Hats/shirt2.png', './Hats/shirt1.png', './Hats/shirt2.png']
 
-let fillImgs = ['./imgTesting/starColor.png', './imgTesting/polygonColor.png']
-let outlineImgs = ['./imgTesting/starLines.png', './imgTesting/polygonLines.png']
-let colorButtonImg = ['./imgTesting/color.png', './imgTesting/color.png', './imgTesting/color.png']
+
+class SelectedShape extends React.Component<{ shape: Shape }, {}> {
+
+    render(): React.ReactNode {
+        return (
+            <div>
+                {/*<span style={{ border: "1px solid black" }}>{this.state.colorStyle}</span>
+                <span>{this.state.fillUrl}</span>*/}
+
+                <img src={this.props.shape.fillUrl} className={this.props.shape.color + " smallImg star"} />
+                <img src={this.props.shape.outlineUrl} className="smallImg star" />
+            </div>
+        )
+    }
+}
+
 
 interface ButtonProps {
     itemName: string,
@@ -62,9 +75,7 @@ interface DU1State {
     favoriteInput: string
     favorites: Favorite[]
 
-    outlineUrl: string
-    fillUrl: string
-    colorStyle: string
+    selectedShape: Shape | undefined
 }
 export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
     constructor(props: any) {
@@ -75,9 +86,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             hatUrl: "",
             shirtUrl: "",
 
-            outlineUrl: "",
-            fillUrl: "",
-            colorStyle: ""
+            selectedShape: undefined
         }
     }
 
@@ -102,7 +111,6 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
 
     render(): React.ReactNode {
         console.log(this.state)
-        var style = this.state.colorStyle + " smallImg star"
         return (
             <>
                 <div className='stage'>
@@ -112,15 +120,10 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
 
                         <ShapeButtons
                             itemName='Shape'
-                            outlineUrls={outlineImgs}
-                            fillUrls={fillImgs}
-                            onClick={(outline, fill) => this.setState({ fillUrl: fill, outlineUrl: outline })}
-                        />
-
-                        <ColorButtons
-                            itemName='Color'
-                            colorUrls={colorButtonImg}
-                            onClick={(url, color) => this.setState({ colorStyle: color })}
+                            onShapeSelect={(shape: Shape) => {
+                                console.log(shape);
+                                this.setState({ selectedShape: shape })
+                            }}
                         />
 
                     </div>
@@ -133,13 +136,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                             <img src={this.state.shirtUrl} style={{ height: "120px" }} />
                         </div>
 
-                        <div>
-                            <span style={{ border: "1px solid black" }}>{this.state.colorStyle}</span>
-                            <span>{this.state.fillUrl}</span>
-
-                            <img src={this.state.fillUrl} className={style} />
-                            <img src={this.state.outlineUrl} className="smallImg star" />
-                        </div>
+                        {this.state.selectedShape && <SelectedShape shape={this.state.selectedShape} />}
 
                         <input type="text"
                             value={this.state.favoriteInput}

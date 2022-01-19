@@ -1,50 +1,44 @@
-import { count } from 'console';
 import React from 'react';
 import './DressUpGame.css'
 
 interface ColorButtonProps {
-    itemName: string,
-    colorUrls: string[],
-
-    onClick: (imgUrl: string, color: string) => void,
+    onClick: (color: string) => void,
 }
 interface ButtonState {
     isTrayOpen: boolean
-
 }
-const colorList: any = {
-    0: "blue",
-    1: "purple",
-    2: "grey"
+const colorList: string[] = [
+    "blue",
+    "purple",
+    "grey"
+]
 
-
-}
+//let colorUrls = ['./imgTesting/color.png', './imgTesting/color.png', './imgTesting/color.png']
 export class ColorButtons extends React.Component<ColorButtonProps, ButtonState>{
     constructor(props: any) {
         super(props);
         this.state = {
-            isTrayOpen: true,
+            isTrayOpen: false,
         }
     }
 
     render(): React.ReactNode {
         var inverse = !this.state.isTrayOpen;
-        // boolean ? "if true" : "if false"
         return (
             <>
-                <h1 onClick={() => this.setState({ isTrayOpen: inverse })}>
-                    {this.state.isTrayOpen ? "-" : "+"}{this.props.itemName}
-                </h1>
+                <h3 onClick={() => this.setState({ isTrayOpen: inverse })}>
+                    {this.state.isTrayOpen ? "-" : "+"} Color
+                </h3>
 
-                {this.state.isTrayOpen && this.props.colorUrls.map((imgUrl: string, index) => {
+                {this.state.isTrayOpen && colorList.map((color: string) => {
                     return (
                         <>
                             <img
-                                src={imgUrl}
+                                src={"./imgTesting/color.png"}
                                 onClick={() => {
-                                    this.props.onClick(imgUrl, colorList[index])
+                                    this.props.onClick(color)
                                 }}
-                                className={` ${colorList[index]} clothesTrayImg`}
+                                className={` ${color} clothesTrayImg`}
                             />
                         </>
                     )
@@ -54,40 +48,67 @@ export class ColorButtons extends React.Component<ColorButtonProps, ButtonState>
     }
 }
 
+export interface ShapeUrl {
+    outlineUrl: string
+    fillUrl: string
+}
 
-interface ButtonProps {
+export interface Shape extends ShapeUrl {
+    color: string
+}
+
+let shapeUrls: ShapeUrl[] = [
+    { outlineUrl: './imgTesting/starLines.png', fillUrl: "./imgTesting/starColor.png" },
+    { outlineUrl: './imgTesting/polygonLines.png', fillUrl: "./imgTesting/polygonColor.png" },
+];
+
+interface ShapeButtonProps {
     itemName: string,
-    outlineUrls: string[],
-    fillUrls: string[],
-    onClick: (outlineUrl: string, fillUrl: string) => void
+    onShapeSelect: (shape: Shape) => void
 }
-interface ButtonState {
+interface ShapeButtonState {
     isTrayOpen: boolean
+    selectedShape: ShapeUrl | undefined
+    selectedColor: string
 }
-export class ShapeButtons extends React.Component<ButtonProps, ButtonState>{
+export class ShapeButtons extends React.Component<ShapeButtonProps, ShapeButtonState>{
     constructor(props: any) {
         super(props);
         this.state = {
-            isTrayOpen: true
+            isTrayOpen: false,
+            selectedShape: undefined,
+            selectedColor: "grey"
         }
     }
     render(): React.ReactNode {
         var inverse = !this.state.isTrayOpen;
-        // boolean ? "if true" : "if false"
         return (
             <>
                 <h1 onClick={() => this.setState({ isTrayOpen: inverse })}>
                     {this.state.isTrayOpen ? "-" : "+"}{this.props.itemName}</h1>
-                {this.state.isTrayOpen && this.props.outlineUrls.map((outlineUrl: string, index) => {
-                    return (
+                {this.state.isTrayOpen &&
+                    <>
+                        {shapeUrls.map((shapeUrl: ShapeUrl) => {
+                            return (
+                                <img
+                                    src={shapeUrl.outlineUrl}
+                                    className="clothesTrayImg"
+                                    onClick={() => {
+                                        this.setState({ selectedShape: shapeUrl });
+                                        this.props.onShapeSelect({ ...shapeUrl, color: this.state.selectedColor })
+                                    }} />
 
-                        <img
-                            src={outlineUrl}
-                            className="clothesTrayImg"
-                            onClick={() => this.props.onClick(outlineUrl, this.props.fillUrls[index])} />
+                            )
+                        })}
+                        <ColorButtons onClick={(color) => {
+                            this.setState({ selectedColor: color });
+                            if (this.state.selectedShape) {
+                                this.props.onShapeSelect({ ...this.state.selectedShape, color: color })
+                            }
+                        }} />
 
-                    )
-                })}
+                    </>
+                }
             </>
         );
     }
