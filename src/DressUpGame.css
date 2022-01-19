@@ -30,19 +30,3 @@
     left: 250px;
     flex-wrap: wrap;
 }
-
-.outline{
-    position: absolute;
-    order: 1;
-    top: 10px;
-    left: 250px;
-    flex-wrap: wrap;
-}
-
-.fill{
-    position: absolute;
-    order: 2;
-    top: 10px;
-    left: 250px;
-    flex-wrap: wrap;
-}

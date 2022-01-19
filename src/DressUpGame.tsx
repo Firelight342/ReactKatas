@@ -1,6 +1,6 @@
 import React from 'react';
 import './DressUpGame.css'
-import { ColorButtons } from './DressUpGameButton';
+import { ColorButtons, ShapeButtons } from './DressUpGameButton';
 
 let hatImgs = ['./Hats/hat1.png', './Hats/hat2.png', './Hats/hat1.png', './Hats/hat2.png',
     './Hats/hat1.png', './Hats/hat2.png', './Hats/hat1.png', './Hats/hat2.png']
@@ -8,9 +8,9 @@ let shirtImgs = ['./Hats/shirt1.png', './Hats/shirt2.png', './Hats/shirt1.png', 
     './Hats/shirt1.png', './Hats/shirt2.png', './Hats/shirt1.png', './Hats/shirt2.png', './Hats/shirt1.png',
     './Hats/shirt2.png', './Hats/shirt1.png', './Hats/shirt2.png', './Hats/shirt1.png', './Hats/shirt2.png']
 
+let fillImgs = ['./imgTesting/starColor.png', './imgTesting/polygonColor.png']
 let outlineImgs = ['./imgTesting/starLines.png', './imgTesting/polygonLines.png']
-let fillImgs = ['./imgTesting/starColor.png', './imgTesting/starColor.png', './imgTesting/starColor.png']
-let colorButtonImgs = ['./imgTesting/starColor.png', './imgTesting/blue.png', './imgTesting/purple.png']
+let colorButtonImg = ['./imgTesting/color.png', './imgTesting/color.png', './imgTesting/color.png']
 
 interface ButtonProps {
     itemName: string,
@@ -102,6 +102,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
 
     render(): React.ReactNode {
         console.log(this.state)
+        var style = this.state.colorStyle + " smallImg star"
         return (
             <>
                 <div className='stage'>
@@ -109,15 +110,17 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                         <ClothingButtons itemName='Hats' imgUrls={hatImgs} onClick={(url) => this.setState({ hatUrl: url })} />
                         <ClothingButtons itemName='Shirts' imgUrls={shirtImgs} onClick={(url) => this.setState({ shirtUrl: url })} />
 
-                        <ClothingButtons itemName='Shape' imgUrls={outlineImgs} onClick={(url) => this.setState({ outlineUrl: url })} />
-                        <ClothingButtons itemName='Color' imgUrls={fillImgs} onClick={(url) => this.setState({ fillUrl: url })} />
+                        <ShapeButtons
+                            itemName='Shape'
+                            outlineUrls={outlineImgs}
+                            fillUrls={fillImgs}
+                            onClick={(outline, fill) => this.setState({ fillUrl: fill, outlineUrl: outline })}
+                        />
 
                         <ColorButtons
                             itemName='Color'
-                            buttonUrls={fillImgs}
-                            colorUrls={fillImgs}
-                            onClick={(url) => this.setState({ fillUrl: url })}
-
+                            colorUrls={colorButtonImg}
+                            onClick={(url, color) => this.setState({ colorStyle: color })}
                         />
 
                     </div>
@@ -131,10 +134,10 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                         </div>
 
                         <div>
-                            <span>{this.state.colorStyle}</span>
+                            <span style={{ border: "1px solid black" }}>{this.state.colorStyle}</span>
                             <span>{this.state.fillUrl}</span>
 
-                            <img src={this.state.fillUrl} className="smallImg star purple" />
+                            <img src={this.state.fillUrl} className={style} />
                             <img src={this.state.outlineUrl} className="smallImg star" />
                         </div>
 
