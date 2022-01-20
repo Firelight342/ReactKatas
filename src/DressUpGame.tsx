@@ -1,6 +1,7 @@
 import React from 'react';
 import './DressUpGame.css'
-import { ColorButtons, ShapeButtons, Shape } from './DressUpGameButton';
+import { ShapeButtons, Shape } from './DressUpGameButton';
+import { ItemTray } from './ItemTray';
 
 let hatImgs = ['./Hats/hat1.png', './Hats/hat2.png', './Hats/hat1.png', './Hats/hat2.png',
     './Hats/hat1.png', './Hats/hat2.png', './Hats/hat1.png', './Hats/hat2.png']
