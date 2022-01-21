@@ -12,7 +12,7 @@ export class ItemTray extends React.Component<ItemTrayProps, ItemTrayState>{
     constructor(props: any) {
         super(props);
         this.state = {
-            isTrayOpen: false,
+            isTrayOpen: true,
         }
     }
     render(): React.ReactNode {

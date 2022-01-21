@@ -13,7 +13,7 @@ export interface Shape extends ShapeUrl {
 }
 
 let shapeUrls: ShapeUrl[] = [
-    { outlineUrl: './imgTesting/starLines.png', fillUrl: "./imgTesting/starColorWhite.png" },
+    { outlineUrl: './imgTesting/starLines.png', fillUrl: "./imgTesting/starColorFadeTest.png" },
     { outlineUrl: './imgTesting/polygonLines.png', fillUrl: "./imgTesting/polygonColor.png" },
 ];
 
