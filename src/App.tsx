@@ -5,8 +5,8 @@ import { ImageDisplay, LotrCharacterDisplay } from './ImageDisplay';
 import { LotrWiki } from './LotrWiki';
 import { PokerComponent } from './CardLibrary/PokerComponent';
 import { ShoppingList } from './ShoppingList';
-import { DressUpGameTryingStuff } from './DressUpGame';
 import { ColorSwitcher } from './ColorSwitcher';
+import { DressUpGameTryingStuff } from './DressUpGame/DressUpGame';
 
 
 export class App extends React.Component<any, any>{
