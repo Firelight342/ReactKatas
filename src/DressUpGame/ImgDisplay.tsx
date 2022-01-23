@@ -9,8 +9,11 @@ export class SelectedShape extends React.Component<{ shape: Shape }, {}> {
         return (
 
             <div>
+                <img src={this.props.shape.bgColorUrl} className="body " />
                 <img src={this.props.shape.fillUrl} className={this.props.shape.color + " body"} />
+                <img src={this.props.shape.secondFillUrl} className={this.props.shape.color + " body"} />
                 <img src={this.props.shape.outlineUrl} className="body " />
+
             </div>
         )
     }

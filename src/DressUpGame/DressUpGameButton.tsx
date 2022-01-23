@@ -19,8 +19,8 @@ export class ShapeButtonsWithColor extends React.Component<ShapeButtonProps, Sha
     constructor(props: any) {
         super(props);
         this.state = {
-            selectedShape: undefined,
-            selectedColor: "grey"
+            selectedShape: this.props.itemUrls[0],
+            selectedColor: ""
         }
     }
     render(): React.ReactNode {
@@ -39,13 +39,13 @@ export class ShapeButtonsWithColor extends React.Component<ShapeButtonProps, Sha
                                     }} />
                             )
                         })}
+                        <div></div>
                         <ColorButtons color={this.props.color} onClick={(color) => {
                             this.setState({ selectedColor: color });
                             if (this.state.selectedShape) {
                                 this.props.onShapeSelect({ ...this.state.selectedShape, color: color })
                             }
                         }} />
-
                     </>
                 </ItemTray>
             </>
@@ -93,8 +93,6 @@ export class ShapeButtonsWithoutColor extends React.Component<ShapeButtonPropsNC
 }
 
 //hat and shirt button setup
-
-
 interface ButtonProps {
     itemName: string,
     imgUrls: string[],

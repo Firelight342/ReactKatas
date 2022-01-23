@@ -3,50 +3,92 @@ import './DressUpGame.css'
 import './DressUpGameColors.css'
 
 export interface ShapeUrl {
-    outlineUrl: string
+    outlineUrl?: string
     fillUrl?: string
+    secondFillUrl?: string
+    bgColorUrl?: string
 }
 export interface Shape extends ShapeUrl {
     color?: string
 }
 
-export let characterUrls: ShapeUrl[] = [
-    { outlineUrl: './DUG/girlOutline.png', fillUrl: "./DUG/girlColor.png" },
+
+export let bangs: ShapeUrl[] = [
+    { outlineUrl: './DUG/bangs/bangOL1.png', fillUrl: "./DUG/bangs/bangC1.png" },
+    { outlineUrl: './DUG/bangs/bangOL2.png', fillUrl: "./DUG/bangs/bangC2.png" },
+    { outlineUrl: './DUG/bangs/bangOL3.png', fillUrl: "./DUG/bangs/bangC3.png" },
+    { outlineUrl: './DUG/bangs/bangOL4.png', fillUrl: "./DUG/bangs/bangC4.png" },
+    { outlineUrl: './DUG/bangs/bangOL5.png', fillUrl: "./DUG/bangs/bangC5.png" },
+    { outlineUrl: './DUG/bangs/bangOL6.png', fillUrl: "./DUG/bangs/bangC6.png" },
+    { outlineUrl: './DUG/bangs/bangOL7.png', fillUrl: "./DUG/bangs/bangC7.png" },
+    { outlineUrl: './DUG/bangs/bangOL8.png', fillUrl: "./DUG/bangs/bangC8.png" },
+    { outlineUrl: './DUG/bangs/bangOL9.png', fillUrl: "./DUG/bangs/bangC9.png" },
+    { outlineUrl: './DUG/bangs/bangOL10.png', fillUrl: "./DUG/bangs/bangC10.png" },
+    { outlineUrl: "./DUG/blank.png", fillUrl: "" },
+];
+export let headHair: ShapeUrl[] = [
+    { outlineUrl: './DUG/headHair/headHairOL1.png', fillUrl: "./DUG/headHair/headHairC1.png" },
+    { outlineUrl: './DUG/headHair/headHairOL2.png', fillUrl: "./DUG/headHair/headHairC2.png" },
+    { outlineUrl: './DUG/headHair/headHairOL3.png', fillUrl: "./DUG/headHair/headHairC3.png" },
+    { outlineUrl: './DUG/headHair/headHairOL4.png', fillUrl: "./DUG/headHair/headHairC4.png" },
+    { outlineUrl: "./DUG/blank.png", fillUrl: "" },
 ];
 
+export let characterUrls: Shape =
+    { outlineUrl: './DUG/girl/girlOutline.png', fillUrl: "./DUG/girl/girlColor.png", color: "grey" };
+
 export let lipsUrls: ShapeUrl[] = [
-    { outlineUrl: './DUG/lipsOL1.png', fillUrl: "./DUG/lipsC1.png" },
-    { outlineUrl: './DUG/lipsOL2.png', fillUrl: "./DUG/lipsC2.png" },
-    { outlineUrl: './DUG/lipsOL3.png', fillUrl: "./DUG/lipsC3.png" },
-    { outlineUrl: './DUG/lipsOL4.png', fillUrl: "./DUG/lipsC4.png" },
-    { outlineUrl: './DUG/lipsOL5.png', fillUrl: "./DUG/lipsC5.png" },
-    { outlineUrl: './DUG/lipsOL6.png', fillUrl: "./DUG/lipsC6.png" },
+    { outlineUrl: './DUG/lips/lipsOL1.png', fillUrl: "./DUG/lips/lipsC1.png" },
+    { outlineUrl: './DUG/lips/lipsOL2.png', fillUrl: "./DUG/lips/lipsC2.png" },
+    { outlineUrl: './DUG/lips/lipsOL3.png', fillUrl: "./DUG/lips/lipsC3.png" },
+    { outlineUrl: './DUG/lips/lipsOL4.png', fillUrl: "./DUG/lips/lipsC4.png" },
+    { outlineUrl: './DUG/lips/lipsOL5.png', fillUrl: "./DUG/lips/lipsC5.png" },
+    { outlineUrl: './DUG/lips/lipsOL6.png', fillUrl: "./DUG/lips/lipsC6.png" },
 ];
 
 export let noseUrls: ShapeUrl[] = [
-    { outlineUrl: './DUG/nose1.png', fillUrl: "" },
-    { outlineUrl: './DUG/nose2.png', fillUrl: "" },
-    { outlineUrl: './DUG/nose3.png', fillUrl: "" },
-    { outlineUrl: './DUG/nose4.png', fillUrl: "" },
+    { outlineUrl: './DUG/noses/nose1.png', fillUrl: "" },
+    { outlineUrl: './DUG/noses/nose2.png', fillUrl: "" },
+    { outlineUrl: './DUG/noses/nose3.png', fillUrl: "" },
+    { outlineUrl: './DUG/noses/nose4.png', fillUrl: "" },
 ];
 
 export let browUrls: ShapeUrl[] = [
-    { outlineUrl: './DUG/browOL1.png', fillUrl: "./DUG/browC1.png" },
-    { outlineUrl: './DUG/browOL2.png', fillUrl: "./DUG/browC2.png" },
-    { outlineUrl: './DUG/browOL3.png', fillUrl: "./DUG/browC3.png" },
-    { outlineUrl: './DUG/browOL4.png', fillUrl: "./DUG/browC4.png" },
-    { outlineUrl: './DUG/browOL5.png', fillUrl: "./DUG/browC5.png" },
+    { outlineUrl: './DUG/brows/browOL1.png', fillUrl: "./DUG/brows/browC1.png" },
+    { outlineUrl: './DUG/brows/browOL2.png', fillUrl: "./DUG/brows/browC2.png" },
+    { outlineUrl: './DUG/brows/browOL3.png', fillUrl: "./DUG/brows/browC3.png" },
+    { outlineUrl: './DUG/brows/browOL4.png', fillUrl: "./DUG/brows/browC4.png" },
+    { outlineUrl: './DUG/brows/browOL5.png', fillUrl: "./DUG/brows/browC5.png" },
 ];
 
+export let eyeUrls: Shape =
+{
+    outlineUrl: './DUG/eyes/eye.png',
+    fillUrl: './DUG/eyes/eyeIris1.png',
+    secondFillUrl: './DUG/eyes/eyeIris2.png',
+    bgColorUrl: "./DUG/eyes/eyeWhites.png"
+};
 
+export let eyeLashUrls: ShapeUrl[] = [
+    { outlineUrl: './DUG/eyes/eyeLash1.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
+    { outlineUrl: './DUG/eyes/eyeLash2.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
+    { outlineUrl: './DUG/eyes/eyeLash3.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
+    { outlineUrl: './DUG/eyes/eyeLash4.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
+    { outlineUrl: './DUG/eyes/eyeLash5.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
+    { outlineUrl: './DUG/eyes/eyeLash6.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
+    { outlineUrl: './DUG/eyes/eyeLash7.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
+    { outlineUrl: './DUG/eyes/eyeLash8.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
+    { outlineUrl: './DUG/eyes/eye.png', fillUrl: "" },
+
+];
 
 
 export const fleshColor: string[] = [
     "skin1",
     "skin2",
     "skin3",
-    "skin4",
     "skin5",
+    "skin4",
     "skin6",
     "skin7",
     "skin8",
