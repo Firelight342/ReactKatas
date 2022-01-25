@@ -3,9 +3,9 @@ import './DressUpGame.css'
 import './DressUpGameColors.css'
 import { ShapeButtonsWithColor, ShapeButtonsWithoutColor } from './DressUpGameButton';
 import {
-    bangs, bigColorOption, browUrls, characterUrls,
+    bangs, bigColorOption, bodice, browUrls, characterUrls,
     eyeLashUrls, eyeUrls, fleshColor, hairBraids, hairDown, hairEx, hairUp,
-    headHair, lipColor, lipsUrls, noseUrls, Shape
+    headHair, lipColor, lipsUrls, noseUrls, pants, Shape, tops
 } from './DUGColorAndImgLists';
 import { SelectedShape } from './ImgDisplay';
 import { ColorButtonsForPermObj } from './DressUpGameColorButton';
@@ -25,6 +25,11 @@ export interface Favorite {
     hairUp?: Shape
     hairDown?: Shape
     hairBraids?: Shape
+    tops?: Shape
+
+    bodice?: Shape
+
+    pants?: Shape
 }
 
 export interface DU1State {
@@ -46,6 +51,12 @@ export interface DU1State {
     hairUp: Shape | undefined
     hairDown: Shape | undefined
     hairBraids: Shape | undefined
+
+    tops: Shape | undefined
+
+    bodice: Shape | undefined
+
+    pants: Shape | undefined
 }
 
 export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
@@ -75,7 +86,9 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                 hairDown: undefined,
                 hairBraids: undefined,
 
-
+                tops: tops[0],
+                bodice: bodice[0],
+                pants: pants[0],
             }
         }
     }
@@ -95,6 +108,11 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                 hairUp: favorite.hairUp,
                 hairDown: favorite.hairDown,
                 hairBraids: favorite.hairBraids,
+                tops: favorite.tops,
+
+                bodice: favorite.bodice,
+                pants: favorite.pants,
+
             })}>
                 {favorite.name}
             </li>);
@@ -118,7 +136,10 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                 hairUp: this.state.hairUp,
                 hairDown: this.state.hairDown,
                 hairBraids: this.state.hairBraids,
+                tops: this.state.tops,
 
+                bodice: this.state.bodice,
+                pants: this.state.pants,
             }]
         })
     }
@@ -129,12 +150,11 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
         return (
             <>
                 <div>
-
-
                     {/* ART */}
                     <div >
                         {this.state.hairDown && <SelectedShape shape={this.state.hairDown} />}
                         {this.state.hairUp && <SelectedShape shape={this.state.hairUp} />}
+
                         {this.state.character && <SelectedShape shape={this.state.character} />}
                         {this.state.lips && <SelectedShape shape={this.state.lips} />}
                         {this.state.nose && <SelectedShape shape={this.state.nose} />}
@@ -145,8 +165,12 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                         {this.state.headHair && <SelectedShape shape={this.state.headHair} />}
                         {this.state.hairBraids && <SelectedShape shape={this.state.hairBraids} />}
                         {this.state.bangs && <SelectedShape shape={this.state.bangs} />}
-                        {this.state.hairEx && <SelectedShape shape={this.state.hairEx} />}
 
+                        {this.state.pants && <SelectedShape shape={this.state.pants} />}
+                        {this.state.bodice && <SelectedShape shape={this.state.bodice} />}
+                        {this.state.tops && <SelectedShape shape={this.state.tops} />}
+
+                        {this.state.hairEx && <SelectedShape shape={this.state.hairEx} />}
 
 
 
@@ -285,19 +309,46 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                             />
                         </div>}
 
-                    {/* Tray 2*/}
+                    {/* Tray 3*/}
                     {this.state.openedTray === 2 &&
                         <div className="tray">
                             <ShapeButtonsWithColor
-                                itemName='Hair Down'
-                                itemUrls={hairDown}
+                                itemName='Tops'
+                                itemUrls={tops}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ hairDown: shape })
+                                    this.setState({ tops: shape })
                                 }}
                                 color={bigColorOption}
-                                currentColor={this.state.hairDown?.color}
-                                currentShape={this.state.hairDown}
+                                currentColor={this.state.tops?.color}
+                                currentShape={this.state.tops}
+                            />
+                            <ShapeButtonsWithColor
+                                itemName='Bodice'
+                                itemUrls={bodice}
+                                onShapeSelect={(shape: Shape) => {
+                                    console.log(shape);
+                                    this.setState({ bodice: shape })
+                                }}
+                                color={bigColorOption}
+                                currentColor={this.state.bodice?.color}
+                                currentShape={this.state.bodice}
+                            />
+                        </div>}
+
+                    {/* Tray 4*/}
+                    {this.state.openedTray === 3 &&
+                        <div className="tray">
+                            <ShapeButtonsWithColor
+                                itemName='Pants'
+                                itemUrls={pants}
+                                onShapeSelect={(shape: Shape) => {
+                                    console.log(shape);
+                                    this.setState({ pants: shape })
+                                }}
+                                color={bigColorOption}
+                                currentColor={this.state.pants?.color}
+                                currentShape={this.state.pants}
                             />
                         </div>}
 
@@ -306,6 +357,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                         <button onClick={() => this.setState({ openedTray: 0 })}>Body</button>
                         <button onClick={() => this.setState({ openedTray: 1 })}>Hair</button>
                         <button onClick={() => this.setState({ openedTray: 2 })}>Tops</button>
+                        <button onClick={() => this.setState({ openedTray: 3 })}>Pants</button>
                     </span>
                     {/* Input and Save */}
                     <span className="input">
@@ -327,6 +379,11 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                             hairEx: undefined,
                             hairDown: undefined,
                             hairBraids: undefined,
+                            hairUp: undefined,
+                            tops: tops[0],
+
+                            bodice: bodice[0],
+                            pants: pants[0],
 
                             openedTray: 0
 

@@ -30,7 +30,7 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### Publishing
-
+- add / commit  first
 - Run `npm run build`
 - Copy contents of build folder into firelight342.github.io directory
 - Run git add . /commit /push from firelight342.... project

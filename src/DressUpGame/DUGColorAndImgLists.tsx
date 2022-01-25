@@ -1,4 +1,3 @@
-import React from 'react';
 import './DressUpGame.css'
 import './DressUpGameColors.css'
 
@@ -12,6 +11,34 @@ export interface Shape extends ShapeUrl {
     color?: string
 }
 
+export let pants: Shape[] = [
+    { outlineUrl: './DUG/legs/pantsOL1.png', fillUrl: "./DUG/legs/pantsC1.png" },
+    { outlineUrl: './DUG/legs/pantsOL2.png', fillUrl: "./DUG/legs/pantsC2.png" },
+    { outlineUrl: './DUG/legs/pantsOL3.png', fillUrl: "./DUG/legs/pantsC3.png" },
+    { outlineUrl: './DUG/legs/pantsOL4.png', fillUrl: "./DUG/legs/pantsC4.png" },
+    { outlineUrl: "./DUG/blank.png", fillUrl: "" },
+]
+
+export let bodice: Shape[] = [
+    { outlineUrl: './DUG/bodice/shirtOL1.png', fillUrl: "./DUG/bodice/shirtC1.png" },
+    { outlineUrl: "./DUG/blank.png", fillUrl: "" },
+]
+
+export let tops: Shape[] = [
+    { outlineUrl: './DUG/tops/topsOL1.png', fillUrl: "./DUG/tops/topsC1.png" },
+    { outlineUrl: './DUG/tops/topsOL2.png', fillUrl: "./DUG/tops/topsC2.png" },
+    { outlineUrl: './DUG/tops/topsOL3.png', fillUrl: "./DUG/tops/topsC3.png" },
+    { outlineUrl: './DUG/tops/topsOL4.png', fillUrl: "./DUG/tops/topsC4.png" },
+    { outlineUrl: './DUG/tops/topsOL5.png', fillUrl: "./DUG/tops/topsC5.png" },
+    { outlineUrl: './DUG/tops/topsOL6.png', fillUrl: "./DUG/tops/topsC6.png" },
+    { outlineUrl: './DUG/tops/topsOL7.png', fillUrl: "./DUG/tops/topsC7.png" },
+    { outlineUrl: './DUG/tops/topsOL8.png', fillUrl: "./DUG/tops/topsC8.png" },
+    { outlineUrl: './DUG/tops/topsOL9.png', fillUrl: "./DUG/tops/topsC9.png" },
+    { outlineUrl: './DUG/tops/topsOL10.png', fillUrl: "./DUG/tops/topsC10.png" },
+    { outlineUrl: './DUG/tops/topsOL11.png', fillUrl: "./DUG/tops/topsC11.png" },
+    { outlineUrl: './DUG/tops/topsOL12.png', fillUrl: "./DUG/tops/topsC12.png" },
+    { outlineUrl: "./DUG/blank.png", fillUrl: "" },
+];
 
 export let hairBraids: Shape[] = [
     { outlineUrl: './DUG/hairBraids/hairBraidsOL1.png', fillUrl: "./DUG/hairBraids/hairBraidsC1.png" },
