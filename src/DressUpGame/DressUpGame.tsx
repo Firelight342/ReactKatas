@@ -10,8 +10,9 @@ import {
 import { SelectedShape } from './ImgDisplay';
 import { ColorButtonsForPermObj } from './DressUpGameColorButton';
 
+//type Character = { [key: string]: Shape }
 
-export interface Favorite {
+export interface Character {
     name: string
     character?: Shape
     lips?: Shape
@@ -26,37 +27,15 @@ export interface Favorite {
     hairDown?: Shape
     hairBraids?: Shape
     tops?: Shape
-
     bodice?: Shape
-
     pants?: Shape
 }
 
 export interface DU1State {
     favoriteInput: string
-    favorites: Favorite[]
-
+    favorites: Character[]
+    currentCharacter: Character
     openedTray: number
-
-    character: Shape | undefined
-    lips: Shape | undefined
-    nose: Shape | undefined
-    brow: Shape | undefined
-    eyeColor: Shape | undefined
-    eye: Shape | undefined
-
-    headHair: Shape | undefined
-    bangs: Shape | undefined
-    hairEx: Shape | undefined
-    hairUp: Shape | undefined
-    hairDown: Shape | undefined
-    hairBraids: Shape | undefined
-
-    tops: Shape | undefined
-
-    bodice: Shape | undefined
-
-    pants: Shape | undefined
 }
 
 export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
@@ -69,51 +48,36 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             this.state = {
                 favoriteInput: "",
                 favorites: [],
-
                 openedTray: 0,
+                currentCharacter: {
+                    name: "",
 
-                character: characterUrls,
-                lips: lipsUrls[0],
-                nose: noseUrls[0],
-                brow: browUrls[0],
-                eyeColor: undefined,
-                eye: eyeLashUrls[8],
+                    character: characterUrls,
+                    lips: lipsUrls[0],
+                    nose: noseUrls[0],
+                    brow: browUrls[0],
+                    eyeColor: undefined,
+                    eye: eyeLashUrls[8],
 
-                headHair: undefined,
-                bangs: undefined,
-                hairEx: undefined,
-                hairUp: undefined,
-                hairDown: undefined,
-                hairBraids: undefined,
+                    headHair: undefined,
+                    bangs: undefined,
+                    hairEx: undefined,
+                    hairUp: undefined,
+                    hairDown: undefined,
+                    hairBraids: undefined,
 
-                tops: tops[0],
-                bodice: bodice[0],
-                pants: pants[0],
+                    tops: tops[0],
+                    bodice: bodice[0],
+                    pants: pants[0],
+
+                }
             }
         }
     }
 
-    renderFavoriteListItem(favorite: Favorite): React.ReactNode {
+    renderFavoriteListItem(favorite: Character): React.ReactNode {
         return (
-            <li onClick={() => this.setState({
-                character: favorite.character,
-                lips: favorite.lips,
-                nose: favorite.nose,
-                brow: favorite.brow,
-                eye: favorite.eye,
-                eyeColor: favorite.eyeColor,
-                bangs: favorite.bangs,
-                headHair: favorite.headHair,
-                hairEx: favorite.hairEx,
-                hairUp: favorite.hairUp,
-                hairDown: favorite.hairDown,
-                hairBraids: favorite.hairBraids,
-                tops: favorite.tops,
-
-                bodice: favorite.bodice,
-                pants: favorite.pants,
-
-            })}>
+            <li onClick={() => this.setState({ currentCharacter: favorite })}>
                 {favorite.name}
             </li>);
     }
@@ -123,26 +87,12 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             favoriteInput: "",
             favorites: [...this.state.favorites,
             {
+                ... this.state.currentCharacter,
                 name: this.state.favoriteInput,
-                character: this.state.character,
-                lips: this.state.lips,
-                nose: this.state.nose,
-                brow: this.state.brow,
-                eye: this.state.eye,
-                eyeColor: this.state.eyeColor,
-                bangs: this.state.bangs,
-                headHair: this.state.headHair,
-                hairEx: this.state.hairEx,
-                hairUp: this.state.hairUp,
-                hairDown: this.state.hairDown,
-                hairBraids: this.state.hairBraids,
-                tops: this.state.tops,
-
-                bodice: this.state.bodice,
-                pants: this.state.pants,
             }]
         })
     }
+
 
 
     render(): React.ReactNode {
@@ -152,25 +102,21 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                 <div>
                     {/* ART */}
                     <div >
-                        {this.state.hairDown && <SelectedShape shape={this.state.hairDown} />}
-                        {this.state.hairUp && <SelectedShape shape={this.state.hairUp} />}
-
-                        {this.state.character && <SelectedShape shape={this.state.character} />}
-                        {this.state.lips && <SelectedShape shape={this.state.lips} />}
-                        {this.state.nose && <SelectedShape shape={this.state.nose} />}
-                        {this.state.brow && <SelectedShape shape={this.state.brow} />}
-                        {this.state.eyeColor && <SelectedShape shape={this.state.eyeColor} />}
-                        {this.state.eye && <SelectedShape shape={this.state.eye} />}
-
-                        {this.state.headHair && <SelectedShape shape={this.state.headHair} />}
-                        {this.state.hairBraids && <SelectedShape shape={this.state.hairBraids} />}
-                        {this.state.bangs && <SelectedShape shape={this.state.bangs} />}
-
-                        {this.state.pants && <SelectedShape shape={this.state.pants} />}
-                        {this.state.bodice && <SelectedShape shape={this.state.bodice} />}
-                        {this.state.tops && <SelectedShape shape={this.state.tops} />}
-
-                        {this.state.hairEx && <SelectedShape shape={this.state.hairEx} />}
+                        {this.state.currentCharacter.hairDown && <SelectedShape shape={this.state.currentCharacter.hairDown} />}
+                        {this.state.currentCharacter.hairUp && <SelectedShape shape={this.state.currentCharacter.hairUp} />}
+                        {this.state.currentCharacter.character && <SelectedShape shape={this.state.currentCharacter.character} />}
+                        {this.state.currentCharacter.lips && <SelectedShape shape={this.state.currentCharacter.lips} />}
+                        {this.state.currentCharacter.nose && <SelectedShape shape={this.state.currentCharacter.nose} />}
+                        {this.state.currentCharacter.brow && <SelectedShape shape={this.state.currentCharacter.brow} />}
+                        {this.state.currentCharacter.eyeColor && <SelectedShape shape={this.state.currentCharacter.eyeColor} />}
+                        {this.state.currentCharacter.eye && <SelectedShape shape={this.state.currentCharacter.eye} />}
+                        {this.state.currentCharacter.headHair && <SelectedShape shape={this.state.currentCharacter.headHair} />}
+                        {this.state.currentCharacter.hairBraids && <SelectedShape shape={this.state.currentCharacter.hairBraids} />}
+                        {this.state.currentCharacter.bangs && <SelectedShape shape={this.state.currentCharacter.bangs} />}
+                        {this.state.currentCharacter.pants && <SelectedShape shape={this.state.currentCharacter.pants} />}
+                        {this.state.currentCharacter.bodice && <SelectedShape shape={this.state.currentCharacter.bodice} />}
+                        {this.state.currentCharacter.tops && <SelectedShape shape={this.state.currentCharacter.tops} />}
+                        {this.state.currentCharacter.hairEx && <SelectedShape shape={this.state.currentCharacter.hairEx} />}
 
 
 
@@ -183,7 +129,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 imgUrl={characterUrls}
                                 onClick={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ character: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, character: shape } })
                                 }}
                                 color={fleshColor}
                             />
@@ -192,18 +138,17 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 itemUrls={browUrls}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ brow: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, brow: shape } })
                                 }}
                                 color={bigColorOption}
-                                currentShape={this.state.brow}
-                                currentColor={this.state.brow?.color}
+                                defaultShape={this.state.currentCharacter.brow}
                             />
                             <ShapeButtonsWithoutColor
                                 itemName='Eye'
                                 itemUrls={eyeLashUrls}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ eye: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, eye: shape } })
                                 }}
                             />
                             <ColorButtonsForPermObj
@@ -211,7 +156,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 imgUrl={eyeUrls}
                                 onClick={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ eyeColor: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, eyeColor: shape } })
                                 }}
                                 color={bigColorOption}
                             />
@@ -220,7 +165,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 itemUrls={noseUrls}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ nose: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, nose: shape } })
                                 }}
                             />
                             <ShapeButtonsWithColor
@@ -228,11 +173,10 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 itemUrls={lipsUrls}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ lips: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, lips: shape } })
                                 }}
                                 color={lipColor}
-                                currentShape={this.state.lips}
-                                currentColor={this.state.lips?.color}
+                                defaultShape={this.state.currentCharacter.lips}
                             />
 
 
@@ -246,66 +190,60 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 itemUrls={headHair}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ headHair: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, headHair: shape } })
                                 }}
                                 color={bigColorOption}
-                                currentColor={this.state.headHair?.color}
-                                currentShape={this.state.headHair}
+                                defaultShape={this.state.currentCharacter.headHair}
                             />
                             <ShapeButtonsWithColor
                                 itemName='Bangs'
                                 itemUrls={bangs}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ bangs: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, bangs: shape } })
                                 }}
                                 color={bigColorOption}
-                                currentColor={this.state.bangs?.color}
-                                currentShape={this.state.bangs}
+                                defaultShape={this.state.currentCharacter.bangs}
                             />
                             <ShapeButtonsWithColor
                                 itemName='Hair Braids'
                                 itemUrls={hairBraids}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ hairBraids: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, hairBraids: shape } })
                                 }}
                                 color={bigColorOption}
-                                currentColor={this.state.hairBraids?.color}
-                                currentShape={this.state.hairBraids}
+                                defaultShape={this.state.currentCharacter.hairBraids}
                             />
                             <ShapeButtonsWithColor
                                 itemName='Front Hair'
                                 itemUrls={hairEx}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ hairEx: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, hairEx: shape } })
                                 }}
                                 color={bigColorOption}
-                                currentColor={this.state.hairEx?.color}
-                                currentShape={this.state.hairEx}
+                                defaultShape={this.state.currentCharacter.hairEx}
                             />
                             <ShapeButtonsWithColor
                                 itemName='Hair Tied'
                                 itemUrls={hairUp}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ hairUp: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, hairUp: shape } })
                                 }}
                                 color={bigColorOption}
-                                currentColor={this.state.hairUp?.color}
-                                currentShape={this.state.hairUp}
+                                defaultShape={this.state.currentCharacter.hairUp}
                             />
                             <ShapeButtonsWithColor
                                 itemName='Hair Down'
                                 itemUrls={hairDown}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ hairDown: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, hairDown: shape } })
                                 }}
                                 color={bigColorOption}
-                                currentColor={this.state.hairDown?.color}
-                                currentShape={this.state.hairDown}
+                                defaultShape={this.state.currentCharacter.hairDown}
                             />
                         </div>}
 
@@ -317,22 +255,21 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 itemUrls={tops}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ tops: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, tops: shape } })
                                 }}
                                 color={bigColorOption}
-                                currentColor={this.state.tops?.color}
-                                currentShape={this.state.tops}
+
+                                defaultShape={this.state.currentCharacter.tops}
                             />
                             <ShapeButtonsWithColor
                                 itemName='Bodice'
                                 itemUrls={bodice}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ bodice: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, bodice: shape } })
                                 }}
                                 color={bigColorOption}
-                                currentColor={this.state.bodice?.color}
-                                currentShape={this.state.bodice}
+                                defaultShape={this.state.currentCharacter.bodice}
                             />
                         </div>}
 
@@ -344,11 +281,10 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 itemUrls={pants}
                                 onShapeSelect={(shape: Shape) => {
                                     console.log(shape);
-                                    this.setState({ pants: shape })
+                                    this.setState({ currentCharacter: { ...this.state.currentCharacter, pants: shape } })
                                 }}
                                 color={bigColorOption}
-                                currentColor={this.state.pants?.color}
-                                currentShape={this.state.pants}
+                                defaultShape={this.state.currentCharacter.pants}
                             />
                         </div>}
 
@@ -368,25 +304,25 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                         <ul>{this.state.favorites.map(x => this.renderFavoriteListItem(x))}</ul>
 
                         <button onClick={() => this.setState({
-                            character: characterUrls,
-                            lips: lipsUrls[0],
-                            nose: noseUrls[0],
-                            brow: browUrls[0],
-                            eyeColor: { color: "grey" },
-                            eye: eyeLashUrls[8],
-                            bangs: undefined,
-                            headHair: undefined,
-                            hairEx: undefined,
-                            hairDown: undefined,
-                            hairBraids: undefined,
-                            hairUp: undefined,
-                            tops: tops[0],
-
-                            bodice: bodice[0],
-                            pants: pants[0],
-
-                            openedTray: 0
-
+                            openedTray: 0,
+                            currentCharacter: {
+                                name: "",
+                                character: characterUrls,
+                                lips: lipsUrls[0],
+                                nose: noseUrls[0],
+                                brow: browUrls[0],
+                                eyeColor: { color: "grey" },
+                                eye: eyeLashUrls[8],
+                                bangs: undefined,
+                                headHair: undefined,
+                                hairEx: undefined,
+                                hairDown: undefined,
+                                hairBraids: undefined,
+                                hairUp: undefined,
+                                tops: tops[0],
+                                bodice: bodice[0],
+                                pants: pants[0]
+                            }
                         })}>Reset</button>
 
                         <button onClick={() => window.localStorage.setItem("state", JSON.stringify(this.state))}>Save to LocalStorage</button>

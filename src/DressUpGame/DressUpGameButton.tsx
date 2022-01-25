@@ -4,7 +4,6 @@ import './DressUpGameColors.css'
 import { ColorButtons } from './DressUpGameColorButton';
 import { ItemTray } from './ItemTray';
 import { ShapeUrl, Shape } from './DUGColorAndImgLists';
-import { SelectedShape } from './ImgDisplay';
 
 interface ShapeButtonProps {
     itemName: string,
@@ -12,19 +11,18 @@ interface ShapeButtonProps {
     onShapeSelect: (shape: Shape) => void,
     color: string[]
 
-    currentShape?: Shape
-    currentColor?: string
+    defaultShape?: Shape
 }
 interface ShapeButtonState {
-    selectedShape: ShapeUrl | undefined
-    selectedColor: string
+    selectedShapeUrl: ShapeUrl | undefined
+    selectedShapeColor: string
 }
 export class ShapeButtonsWithColor extends React.Component<ShapeButtonProps, ShapeButtonState>{
     constructor(props: any) {
         super(props);
         this.state = {
-            selectedShape: undefined,
-            selectedColor: ""
+            selectedShapeUrl: this.props.defaultShape || undefined,
+            selectedShapeColor: this.props.defaultShape?.color || ""
         }
     }
     render(): React.ReactNode {
@@ -38,18 +36,8 @@ export class ShapeButtonsWithColor extends React.Component<ShapeButtonProps, Sha
                                     src={shapeUrl.outlineUrl}
                                     className="clothesTrayImg"
                                     onClick={() => {
-                                        this.setState({ selectedShape: shapeUrl });
-
-                                        if (this.state.selectedColor) {
-                                            this.props.onShapeSelect({ ...shapeUrl, color: this.state.selectedColor })
-                                        }
-                                        else {
-                                            this.props.onShapeSelect({ ...shapeUrl, color: this.props.currentColor })
-                                        }
-                                        this.setState({ selectedShape: undefined });
-                                        this.setState({ selectedColor: '' });
-
-                                        //this.props.onShapeSelect({ ...shapeUrl, color: this.state.selectedColor })
+                                        this.setState({ selectedShapeUrl: shapeUrl });
+                                        this.props.onShapeSelect({ ...shapeUrl, color: this.state.selectedShapeColor })
                                     }} />
                             )
                         })}
@@ -57,15 +45,8 @@ export class ShapeButtonsWithColor extends React.Component<ShapeButtonProps, Sha
 
                     </>
                     <ColorButtons color={this.props.color} onClick={(color) => {
-                        this.setState({ selectedColor: color });
-                        if (this.state.selectedShape) {
-                            this.props.onShapeSelect({ ...this.state.selectedShape, color: color })
-                        }
-                        else {
-                            this.props.onShapeSelect({ ...this.props.currentShape, color: color })
-                        }
-                        this.setState({ selectedShape: undefined });
-                        this.setState({ selectedColor: '' });
+                        this.setState({ selectedShapeColor: color });
+                        this.props.onShapeSelect({ ...this.state.selectedShapeUrl, color: color })
                     }} />
                 </ItemTray>
             </>
