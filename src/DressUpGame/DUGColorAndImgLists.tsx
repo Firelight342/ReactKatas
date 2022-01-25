@@ -123,8 +123,9 @@ export let headHair: Shape[] = [
     { outlineUrl: "./DUG/blank.png", fillUrl: "" },
 ];
 
-export let characterUrls: Shape =
-    { outlineUrl: './DUG/girl/girlOutline.png', fillUrl: "./DUG/girl/girlColor.png", color: "grey" };
+export let characterUrls: Shape[] = [
+    { outlineUrl: './DUG/girl/girlOutline.png', fillUrl: "./DUG/girl/girlColor.png", color: "grey" }
+]
 
 export let lipsUrls: Shape[] = [
     { outlineUrl: './DUG/lips/lipsOL1.png', fillUrl: "./DUG/lips/lipsC1.png", color: "grey" },
@@ -150,12 +151,13 @@ export let browUrls: Shape[] = [
     { outlineUrl: './DUG/brows/browOL5.png', fillUrl: "./DUG/brows/browC5.png" },
 ];
 
-export let eyeUrls: Shape =
-{
-    fillUrl: './DUG/eyes/eyeIris1.png',
-    secondFillUrl: './DUG/eyes/eyeIris2.png',
-    bgColorUrl: "./DUG/eyes/eyeWhites.png"
-};
+export let eyeUrls: Shape[] = [
+    {
+        fillUrl: './DUG/eyes/eyeIris1.png',
+        secondFillUrl: './DUG/eyes/eyeIris2.png',
+        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+    }]
+    ;
 
 export let eyeLashUrls: Shape[] = [
     { outlineUrl: './DUG/eyes/eyeLash1.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
