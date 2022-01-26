@@ -1,11 +1,13 @@
 import React from 'react';
 import './DressUpGame.css'
 import './DressUpGameColors.css'
-import { ShapeButtonsWithColor } from './DressUpGameButton';
+import { ShapeButtonsWithColor } from './ShapeButtonsWithColor';
 import {
     bangs as bangUrls, bigColorOption, bodice, browUrls, characterUrls,
-    eyeLashUrls, eyeUrls, fleshColor, hairBraids as hairBraidUrls, hairDown as hairDownUrls, hairEx as hairExUrls, hairUp as hairUpUrls,
-    headHair as headHairUrls, lipColor, lipsUrls, noseUrls, pants, Shape, tops
+    corset,
+    corsetTies,
+    eyeUrls, fleshColor, hairBraids as hairBraidUrls, hairDown as hairDownUrls, hairEx as hairExUrls, hairUp as hairUpUrls,
+    headHair as headHairUrls, lipColor, lipsUrls, noseUrls, pants, Shape, topCorset, topCorsetTies, tops
 } from './DUGColorAndImgLists';
 import { SelectedShape } from './ImgDisplay';
 
@@ -18,7 +20,6 @@ export interface Character {
     nose?: Shape
     brow?: Shape
     eye?: Shape
-    eyeColor?: Shape
     bangs?: Shape
     headHair?: Shape
     hairEx?: Shape
@@ -26,14 +27,18 @@ export interface Character {
     hairDown?: Shape
     hairBraids?: Shape
     tops?: Shape
+    topCorset?: Shape
+    topCorsetTies?: Shape
     bodice?: Shape
+    corset?: Shape
+    corsetTies?: Shape
     pants?: Shape
 
 }
 
 type CharacterKey = keyof Character
 interface TrayRendering {
-    label: string, key: CharacterKey, itemUrls: Shape[], colors: string[]
+    label: string, key: CharacterKey, itemUrls: Shape[], colors: string[], colors2?: string[]
 }
 
 export interface DU1State {
@@ -61,8 +66,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                     lips: lipsUrls[0],
                     nose: noseUrls[0],
                     brow: browUrls[0],
-                    eyeColor: eyeUrls[0],
-                    eye: eyeLashUrls[8],
+                    eye: eyeUrls[0],
 
                     headHair: undefined,
                     bangs: undefined,
@@ -72,7 +76,12 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                     hairBraids: undefined,
 
                     tops: tops[0],
+                    topCorset: undefined,
+                    topCorsetTies: undefined,
                     bodice: bodice[0],
+                    corset: undefined,
+                    corsetTies: undefined,
+
                     pants: pants[0],
 
                 }
@@ -81,7 +90,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
     }
 
     renderSideBar(trayOptions: TrayRendering[]) {
-        return trayOptions.map(({ label, key, itemUrls, colors }) =>
+        return trayOptions.map(({ label, key, itemUrls, colors, colors2 }) =>
             <ShapeButtonsWithColor
                 itemName={label}
                 itemUrls={itemUrls}
@@ -90,6 +99,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                     this.setState({ currentCharacter: { ...this.state.currentCharacter, [key]: shape } })
                 }}
                 selectableColors={colors}
+                secondSelectableColors={colors2}
                 defaultShape={this.state.currentCharacter[key] as Shape}
             />
         )
@@ -107,7 +117,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             favoriteInput: "",
             favorites: [...this.state.favorites,
             {
-                ... this.state.currentCharacter,
+                ...this.state.currentCharacter,
                 name: this.state.favoriteInput,
             }]
         })
@@ -119,8 +129,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             [
                 { label: "Character", key: "character", itemUrls: characterUrls, colors: fleshColor } as TrayRendering,
                 { label: "Brows", key: "brow", itemUrls: browUrls, colors: bigColorOption } as TrayRendering,
-                { label: "Eye", key: "eye", itemUrls: eyeLashUrls, colors: [] } as TrayRendering,
-                { label: "Eyes Color", key: "eyeColor", itemUrls: eyeUrls, colors: bigColorOption } as TrayRendering,
+                { label: "Eyes", key: "eye", itemUrls: eyeUrls, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
                 { label: "Nose", key: "nose", itemUrls: noseUrls, colors: [] } as TrayRendering,
                 { label: "Lips", key: "lips", itemUrls: lipsUrls, colors: lipColor } as TrayRendering,
             ],
@@ -135,7 +144,12 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
         ],
         "Tops": [
             { label: "Tops", key: "tops", itemUrls: tops, colors: bigColorOption } as TrayRendering,
+            { label: "Upper Corset", key: "topCorset", itemUrls: topCorset, colors: bigColorOption } as TrayRendering,
+            { label: "Upper Corset Ties", key: "topCorsetTies", itemUrls: topCorsetTies, colors: bigColorOption } as TrayRendering,
             { label: "Bodice", key: "bodice", itemUrls: bodice, colors: bigColorOption } as TrayRendering,
+            { label: "Corset", key: "corset", itemUrls: corset, colors: bigColorOption } as TrayRendering,
+            { label: "Corset Ties", key: "corsetTies", itemUrls: corsetTies, colors: bigColorOption } as TrayRendering,
+
         ],
         "Pants": [
             { label: "Pants", key: "pants", itemUrls: pants, colors: bigColorOption } as TrayRendering,
@@ -149,14 +163,17 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
         "lips",
         "nose",
         "brow",
-        "eyeColor",
         "eye",
         "headHair",
         "hairBraids",
         "bangs",
         "pants",
         "bodice",
+        "corset",
+        "corsetTies",
         "tops",
+        "topCorset",
+        "topCorsetTies",
         "hairEx",
 
     ]
@@ -174,6 +191,8 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                             )}
 
                     </div>
+
+                    {/*Buttons*/}
                     {Object.values(this.trayData).map((trayOptions, index) => {
                         return this.state.openedTray === index &&
                             <div className="tray">
@@ -206,8 +225,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 lips: lipsUrls[0],
                                 nose: noseUrls[0],
                                 brow: browUrls[0],
-                                eyeColor: eyeUrls[0],
-                                eye: eyeLashUrls[8],
+                                eye: eyeUrls[0],
                                 bangs: undefined,
                                 headHair: undefined,
                                 hairEx: undefined,
@@ -215,7 +233,11 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 hairBraids: undefined,
                                 hairUp: undefined,
                                 tops: tops[0],
+                                topCorset: undefined,
+                                topCorsetTies: undefined,
                                 bodice: bodice[0],
+                                corset: undefined,
+                                corsetTies: undefined,
                                 pants: pants[0]
                             }
                         })}>Reset</button>

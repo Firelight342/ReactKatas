@@ -5,6 +5,7 @@ import './DressUpGameColors.css'
 interface ColorButtonProps {
     onClick: (color: string) => void,
     color: string[]
+
 }
 
 export class ColorButtons extends React.Component<ColorButtonProps, {}>{
@@ -26,6 +27,8 @@ export class ColorButtons extends React.Component<ColorButtonProps, {}>{
                         </>
                     )
                 })}
+
+
 
             </>
         );

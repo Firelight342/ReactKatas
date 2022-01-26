@@ -1,11 +1,5 @@
 import React from 'react';
 import './App.css'
-import ContactList from './ContactList';
-import { ImageDisplay, LotrCharacterDisplay } from './ImageDisplay';
-import { LotrWiki } from './LotrWiki';
-import { PokerComponent } from './CardLibrary/PokerComponent';
-import { ShoppingList } from './ShoppingList';
-import { ColorSwitcher } from './ColorSwitcher';
 import { DressUpGameTryingStuff } from './DressUpGame/DressUpGame';
 
 
@@ -25,9 +19,6 @@ export class App extends React.Component<any, any>{
 }
 
 export default App;
-
-//<LotrCharacterDisplay />
-//<LotrWiki />
 
 // JSX
 // state

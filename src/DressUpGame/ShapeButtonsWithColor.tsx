@@ -9,20 +9,23 @@ interface ShapeButtonProps {
     itemName: string,
     itemUrls: ShapeUrl[],
     onShapeSelect: (shape: Shape) => void,
-    selectableColors: string[]
+    selectableColors: string[],
+    secondSelectableColors?: string[],
 
     defaultShape?: Shape
 }
 interface ShapeButtonState {
     selectedShapeUrl: ShapeUrl | undefined
     selectedShapeColor: string
+    selectedSecondShapeColor: string
 }
 export class ShapeButtonsWithColor extends React.Component<ShapeButtonProps, ShapeButtonState>{
     constructor(props: any) {
         super(props);
         this.state = {
             selectedShapeUrl: this.props.defaultShape || undefined,
-            selectedShapeColor: this.props.defaultShape?.color || ""
+            selectedShapeColor: this.props.defaultShape?.color || "",
+            selectedSecondShapeColor: this.props.defaultShape?.color2 || ""
         }
     }
     render(): React.ReactNode {
@@ -37,7 +40,11 @@ export class ShapeButtonsWithColor extends React.Component<ShapeButtonProps, Sha
                                     className="clothesTrayImg"
                                     onClick={() => {
                                         this.setState({ selectedShapeUrl: shapeUrl });
-                                        this.props.onShapeSelect({ ...shapeUrl, color: this.state.selectedShapeColor })
+                                        this.props.onShapeSelect({
+                                            ...shapeUrl,
+                                            color: this.state.selectedShapeColor,
+                                            color2: this.state.selectedSecondShapeColor
+                                        })
                                     }} />
                             )
                         })}
@@ -48,7 +55,15 @@ export class ShapeButtonsWithColor extends React.Component<ShapeButtonProps, Sha
                         this.props.selectableColors.length > 0 &&
                         <ColorButtons color={this.props.selectableColors} onClick={(color) => {
                             this.setState({ selectedShapeColor: color });
-                            this.props.onShapeSelect({ ...this.state.selectedShapeUrl, color: color })
+                            this.props.onShapeSelect({ ...this.state.selectedShapeUrl, color: color, color2: this.state.selectedSecondShapeColor })
+                        }} />
+                    }
+                    <div></div>
+                    {
+                        this.props.secondSelectableColors &&
+                        <ColorButtons color={this.props.secondSelectableColors} onClick={(color) => {
+                            this.setState({ selectedSecondShapeColor: color });
+                            this.props.onShapeSelect({ ...this.state.selectedShapeUrl, color: this.state.selectedShapeColor, color2: color })
                         }} />
                     }
                 </ItemTray>

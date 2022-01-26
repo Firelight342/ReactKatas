@@ -3,12 +3,14 @@ import './DressUpGameColors.css'
 
 export interface ShapeUrl {
     outlineUrl?: string
+    extraLineUrl?: string
     fillUrl?: string
     secondFillUrl?: string
     bgColorUrl?: string
 }
 export interface Shape extends ShapeUrl {
     color?: string
+    color2?: string
 }
 
 export let pants: Shape[] = [
@@ -19,10 +21,37 @@ export let pants: Shape[] = [
     { outlineUrl: "./DUG/blank.png", fillUrl: "" },
 ]
 
+
+export let corset: Shape[] = [
+    { outlineUrl: './DUG/bodice/shirtBOL1.png', fillUrl: "./DUG/bodice/shirtBC1.png" },
+    { outlineUrl: "./DUG/blank.png", fillUrl: "" },
+]
+export let corsetTies: Shape[] = [
+    { outlineUrl: './DUG/bodice/shirtTOL1.png', fillUrl: "./DUG/bodice/shirtTC1.png" },
+    { outlineUrl: './DUG/bodice/shirtTOL2.png', fillUrl: "./DUG/bodice/shirtTC2.png" },
+    { outlineUrl: './DUG/bodice/shirtTOL3.png', fillUrl: "./DUG/bodice/shirtTC3.png" },
+    { outlineUrl: "./DUG/blank.png", fillUrl: "" },
+]
+
 export let bodice: Shape[] = [
     { outlineUrl: './DUG/bodice/shirtOL1.png', fillUrl: "./DUG/bodice/shirtC1.png" },
     { outlineUrl: "./DUG/blank.png", fillUrl: "" },
 ]
+
+export let topCorset: Shape[] = [
+    { outlineUrl: './DUG/tops/topsCOL1.png', fillUrl: "./DUG/tops/topsCC1.png" },
+    { outlineUrl: './DUG/tops/topsCOL2.png', fillUrl: "./DUG/tops/topsCC2.png" },
+    { outlineUrl: "./DUG/blank.png", fillUrl: "" },
+
+];
+
+export let topCorsetTies: Shape[] = [
+    { outlineUrl: './DUG/tops/topsTOL1.png', fillUrl: "./DUG/tops/topsTC1.png" },
+    { outlineUrl: './DUG/tops/topsTOL2.png', fillUrl: "./DUG/tops/topsTC2.png" },
+    { outlineUrl: './DUG/tops/topsTOL3.png', fillUrl: "./DUG/tops/topsTC3.png" },
+    { outlineUrl: "./DUG/blank.png", fillUrl: "" },
+
+];
 
 export let tops: Shape[] = [
     { outlineUrl: './DUG/tops/topsOL1.png', fillUrl: "./DUG/tops/topsC1.png" },
@@ -153,25 +182,51 @@ export let browUrls: Shape[] = [
 
 export let eyeUrls: Shape[] = [
     {
-        fillUrl: './DUG/eyes/eyeIris1.png',
-        secondFillUrl: './DUG/eyes/eyeIris2.png',
+        outlineUrl: './DUG/eyes/eye.png',
+        fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
         bgColorUrl: "./DUG/eyes/eyeWhites.png"
-    }]
-    ;
-
-export let eyeLashUrls: Shape[] = [
-    { outlineUrl: './DUG/eyes/eyeLash1.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
-    { outlineUrl: './DUG/eyes/eyeLash2.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
-    { outlineUrl: './DUG/eyes/eyeLash3.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
-    { outlineUrl: './DUG/eyes/eyeLash4.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
-    { outlineUrl: './DUG/eyes/eyeLash5.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
-    { outlineUrl: './DUG/eyes/eyeLash6.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
-    { outlineUrl: './DUG/eyes/eyeLash7.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
-    { outlineUrl: './DUG/eyes/eyeLash8.png', bgColorUrl: './DUG/eyes/eye.png', fillUrl: "" },
-    { outlineUrl: './DUG/eyes/eye.png', fillUrl: "" },
-
+    },
+    {
+        outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash1.png',
+        fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
+        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+    },
+    {
+        outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash2.png',
+        fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
+        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+    },
+    {
+        outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash3.png',
+        fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
+        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+    },
+    {
+        outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash4.png',
+        fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
+        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+    },
+    {
+        outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash5.png',
+        fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
+        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+    },
+    {
+        outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash6.png',
+        fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
+        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+    },
+    {
+        outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash7.png',
+        fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
+        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+    },
+    {
+        outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash8.png',
+        fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
+        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+    },
 ];
-
 
 export const fleshColor: string[] = [
     "skin1",
