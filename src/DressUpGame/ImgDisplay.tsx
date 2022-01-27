@@ -1,21 +1,27 @@
 import React from 'react';
 import './DressUpGame.css'
 import './DressUpGameColors.css'
-import { Shape } from './DUGColorAndImgLists';
+//import { Shape } from './DUGColorAndImgLists';
 
-export class SelectedShape extends React.Component<{ shape: Shape }, {}> {
+export interface Frame {
+    outlineUrl?: string
+    extraLineUrl?: string
+    fillUrl?: string
+    secondFillUrl?: string
+    color?: string
+    color2?: string
+}
+
+export class SelectedShape extends React.Component<{ frame: Frame }, {}> {
 
     render(): React.ReactNode {
         return (
 
             <div>
-                <img src={this.props.shape.backFillUrl} className={this.props.shape.color + " body"} />
-                <img src={this.props.shape.bgPermColorUrl} className="body " />
-                <img src={this.props.shape.fillUrl} className={this.props.shape.color + " body"} />
-                <img src={this.props.shape.secondFillUrl} className={this.props.shape.color2 + " body"} />
-                <img src={this.props.shape.extraLineUrl} className="body " />
-                <img src={this.props.shape.outlineUrl} className="body " />
-
+                <img src={this.props.frame.fillUrl} className={this.props.frame.color + " body"} />
+                <img src={this.props.frame.secondFillUrl} className={this.props.frame.color2 + " body"} />
+                <img src={this.props.frame.extraLineUrl} className="body " />
+                <img src={this.props.frame.outlineUrl} className="body " />
             </div>
         )
     }

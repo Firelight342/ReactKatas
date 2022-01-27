@@ -11,7 +11,7 @@ import {
     eyeUrls, fleshColor, hairBraids as hairBraidUrls, hairDown as hairDownUrls, hairEx as hairExUrls, hairUp as hairUpUrls,
     headHair as headHairUrls, lipColor, lipsUrls, noseUrls, pants, Shape, skirts, sleeves, socks, topCorset, topCorsetTies, tops
 } from './DUGColorAndImgLists';
-import { SelectedShape } from './ImgDisplay';
+import { Frame, SelectedShape } from './ImgDisplay';
 
 export interface Character {
     name: string
@@ -40,12 +40,14 @@ export interface Character {
     arms?: Shape
     armTies?: Shape
     sleeves?: Shape
+    bgSkirt?: Shape
+    eyeWhites?: Shape
 
 }
 
 type CharacterKey = keyof Character
 interface TrayRendering {
-    label: string, key: CharacterKey, itemUrls: Shape[], colors: string[], colors2?: string[]
+    label: string, key: CharacterKey, itemUrls: Shape[], colors: string[], colors2?: string[], bgKey?: CharacterKey
 }
 
 export interface DU1State {
@@ -106,17 +108,28 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
     }
 
     renderSideBar(trayOptions: TrayRendering[]) {
-        return trayOptions.map(({ label, key, itemUrls, colors, colors2 }) =>
+        return trayOptions.map(({ label, key, itemUrls, colors, colors2, bgKey }) =>
             <ShapeButtonsWithColor
                 itemName={label}
                 itemUrls={itemUrls}
                 onShapeSelect={(shape: Shape) => {
                     console.log(shape);
-                    this.setState({ currentCharacter: { ...this.state.currentCharacter, [key]: shape } })
+                    let extraBgInfo = {}
+                    if ((shape.backFillUrl || shape.bgPermColorUrl) && bgKey) {
+                        extraBgInfo = {
+                            [bgKey]:
+                                {
+                                    color: shape.color,
+                                    outlineUrl: shape.bgPermColorUrl,
+                                    fillUrl: shape.backFillUrl,
+                                } as Shape
+                        }
+                    }
+                    this.setState({ currentCharacter: { ...this.state.currentCharacter, [key]: shape, ...extraBgInfo } })
                 }}
                 selectableColors={colors}
                 secondSelectableColors={colors2}
-                defaultShape={this.state.currentCharacter[key] as Shape}
+                selectedShape={this.state.currentCharacter[key] as Shape}
             />
         )
     }
@@ -145,7 +158,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             [
                 { label: "Character", key: "character", itemUrls: characterUrls, colors: fleshColor } as TrayRendering,
                 { label: "Brows", key: "brow", itemUrls: browUrls, colors: bigColorOption } as TrayRendering,
-                { label: "Eyes", key: "eye", itemUrls: eyeUrls, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+                { label: "Eyes", key: "eye", bgKey: "eyeWhites", itemUrls: eyeUrls, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
                 { label: "Nose", key: "nose", itemUrls: noseUrls, colors: [] } as TrayRendering,
                 { label: "Lips", key: "lips", itemUrls: lipsUrls, colors: lipColor } as TrayRendering,
             ],
@@ -172,7 +185,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             { label: "Socks", key: "socks", itemUrls: socks, colors: bigColorOption } as TrayRendering,
             { label: "Belts", key: "belts", itemUrls: belts, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
             { label: "Belt Skirts", key: "beltSkirts", itemUrls: beltSkirts, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
-            { label: "Skirts", key: "skirts", itemUrls: skirts, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Skirts", key: "skirts", bgKey: "bgSkirt", itemUrls: skirts, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
         ],
         "Arms": [
             { label: "Arms", key: "arms", itemUrls: arms, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
@@ -184,10 +197,12 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
     previewPaneDisplayOrder: CharacterKey[] = [
         "hairDown",
         "hairUp",
+        "bgSkirt",
         "character",
         "lips",
         "nose",
         "brow",
+        "eyeWhites",
         "eye",
         "headHair",
         "hairBraids",
@@ -217,8 +232,12 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                     {/* ART */}
                     <div >
                         {this.previewPaneDisplayOrder
-                            .map((key) =>
-                                this.state.currentCharacter[key] && <SelectedShape shape={this.state.currentCharacter[key] as Shape} />
+                            .map((key) => {
+                                if (this.state.currentCharacter[key]) {
+                                    console.log("rendering: ", key, this.state.currentCharacter[key]);
+                                    return (<SelectedShape frame={this.state.currentCharacter[key] as Frame} />)
+                                }
+                            }
                             )}
 
                     </div>

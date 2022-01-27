@@ -9,6 +9,7 @@ export interface ShapeUrl {
     backFillUrl?: string
     bgPermColorUrl?: string
 }
+
 export interface Shape extends ShapeUrl {
     color?: string
     color2?: string
@@ -132,8 +133,9 @@ export let belts: Shape[] = [
         outlineUrl: './DUG/belt/beltOL6.png',
         fillUrl: './DUG/belt/beltC.png', secondFillUrl: './DUG/belt/beltC6.png',
     },
-    { outlineUrl: './DUG/blank.png', },
+    { outlineUrl: './DUG/blank.png', fillUrl: "" },
 ]
+
 export let skirts: Shape[] = [
     {
         outlineUrl: './DUG/skirt/skirtOL1.png', bgPermColorUrl: './DUG/skirt/skirtBOL1.png',
@@ -174,7 +176,7 @@ export let skirts: Shape[] = [
         fillUrl: './DUG/skirt/skirtC9.png', secondFillUrl: './DUG/skirt/skirtSC9.png',
         backFillUrl: './DUG/skirt/skirtBC9.png'
     },
-    { outlineUrl: './DUG/blank.png', },
+    { outlineUrl: './DUG/blank.png', fillUrl: "" },
 ]
 
 export let socks: Shape[] = [
