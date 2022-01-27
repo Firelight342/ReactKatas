@@ -3,13 +3,15 @@ import './DressUpGame.css'
 import './DressUpGameColors.css'
 import { ShapeButtonsWithColor } from './ShapeButtonsWithColor';
 import {
+    armArmor,
     arms,
     armTies,
-    bangs as bangUrls, belts, beltSkirts, bigColorOption, bodice, browUrls, characterUrls,
+    bangs as bangUrls, belts, beltSkirts, bigColorOption, bodice, bodyArmor, browUrls, cloaks, characterUrls,
     corset,
     corsetTies,
     eyeUrls, fleshColor, hairBraids as hairBraidUrls, hairDown as hairDownUrls, hairEx as hairExUrls, hairUp as hairUpUrls,
-    headHair as headHairUrls, lipColor, lipsUrls, noseUrls, pants, Shape, skirts, sleeves, socks, topCorset, topCorsetTies, tops
+    headHair as headHairUrls, lipColor, lipsUrls, noseUrls, pants, Shape, shawls, shoes, shoulderArmor, skirts, sleeves,
+    socks, topArmor, topCorset, topCorsetTies, tops, cloakTops, overShirts, hood, crowns, necklaces, earings, handHeld, foregrounds, backgrounds, middlegrounds
 } from './DUGColorAndImgLists';
 import { Frame, SelectedShape } from './ImgDisplay';
 
@@ -42,6 +44,24 @@ export interface Character {
     sleeves?: Shape
     bgSkirt?: Shape
     eyeWhites?: Shape
+    topArmor?: Shape
+    bodyArmor?: Shape
+    armArmor?: Shape
+    shoulderArmor?: Shape
+    shoes?: Shape
+    cloaks?: Shape
+    shawls?: Shape
+    cloakTops?: Shape
+    overShirts?: Shape
+    hood?: Shape
+    bgHood?: Shape
+    crowns?: Shape
+    necklaces?: Shape
+    earings?: Shape
+    handHeld?: Shape
+    foregrounds?: Shape
+    middlegrounds?: Shape
+    backgrounds?: Shape
 
 }
 
@@ -101,6 +121,28 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                     armTies: undefined,
                     sleeves: undefined,
 
+                    topArmor: undefined,
+                    bodyArmor: undefined,
+                    armArmor: undefined,
+                    shoulderArmor: undefined,
+
+                    shoes: undefined,
+                    cloaks: undefined,
+                    cloakTops: undefined,
+                    shawls: undefined,
+                    overShirts: undefined,
+                    hood: undefined,
+
+                    crowns: undefined,
+                    necklaces: undefined,
+                    earings: undefined,
+
+                    handHeld: undefined,
+                    foregrounds: foregrounds[2],
+                    middlegrounds: undefined,
+                    backgrounds: backgrounds[7],
+
+
 
                 }
             }
@@ -113,7 +155,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                 itemName={label}
                 itemUrls={itemUrls}
                 onShapeSelect={(shape: Shape) => {
-                    console.log(shape);
+                    //console.log(shape);
                     let extraBgInfo = {}
                     if ((shape.backFillUrl || shape.bgPermColorUrl) && bgKey) {
                         extraBgInfo = {
@@ -178,7 +220,11 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             { label: "Bodice", key: "bodice", itemUrls: bodice, colors: bigColorOption } as TrayRendering,
             { label: "Corset", key: "corset", itemUrls: corset, colors: bigColorOption } as TrayRendering,
             { label: "Corset Ties", key: "corsetTies", itemUrls: corsetTies, colors: bigColorOption } as TrayRendering,
-
+        ],
+        "Arms": [
+            { label: "Arms", key: "arms", itemUrls: arms, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Arm Ties", key: "armTies", itemUrls: armTies, colors: bigColorOption } as TrayRendering,
+            { label: "Sleeves", key: "sleeves", itemUrls: sleeves, colors: bigColorOption } as TrayRendering,
         ],
         "Bottoms": [
             { label: "Pants", key: "pants", itemUrls: pants, colors: bigColorOption } as TrayRendering,
@@ -187,16 +233,43 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             { label: "Belt Skirts", key: "beltSkirts", itemUrls: beltSkirts, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
             { label: "Skirts", key: "skirts", bgKey: "bgSkirt", itemUrls: skirts, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
         ],
-        "Arms": [
-            { label: "Arms", key: "arms", itemUrls: arms, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
-            { label: "Arm Ties", key: "armTies", itemUrls: armTies, colors: bigColorOption } as TrayRendering,
-            { label: "Sleeves", key: "sleeves", itemUrls: sleeves, colors: bigColorOption } as TrayRendering,
-        ]
+        "Armor": [
+            { label: "Top Armor", key: "topArmor", itemUrls: topArmor, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Body Armor", key: "bodyArmor", itemUrls: bodyArmor, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Shoulder Armor", key: "shoulderArmor", itemUrls: shoulderArmor, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Arm Armor", key: "armArmor", itemUrls: armArmor, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+        ],
+        "Outerware": [
+            { label: "Shoes", key: "shoes", itemUrls: shoes, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Over Shirt", key: "overShirts", itemUrls: overShirts, colors: bigColorOption } as TrayRendering,
+            { label: "Cloak Tops", key: "cloakTops", itemUrls: cloakTops, colors: bigColorOption } as TrayRendering,
+            { label: "Cloaks", key: "cloaks", itemUrls: cloaks, colors: bigColorOption } as TrayRendering,
+            { label: "Shawls", key: "shawls", itemUrls: shawls, colors: bigColorOption } as TrayRendering,
+            { label: "Hood", key: "hood", bgKey: "bgHood", itemUrls: hood, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+        ],
+        "Jewelry": [
+            { label: "Crowns", key: "crowns", itemUrls: crowns, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Earings", key: "earings", itemUrls: earings, colors: bigColorOption } as TrayRendering,
+            { label: "Necklace", key: "necklaces", itemUrls: necklaces, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+        ],
+        "Effects-Backgrounds": [
+            { label: "Hand Effects", key: "handHeld", itemUrls: handHeld, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Foregrounds", key: "foregrounds", itemUrls: foregrounds, colors: [] } as TrayRendering,
+            { label: "Middlegrounds", key: "middlegrounds", itemUrls: middlegrounds, colors: [] } as TrayRendering,
+            { label: "Backgrounds", key: "backgrounds", itemUrls: backgrounds, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+
+        ],
+
+
     };
 
     previewPaneDisplayOrder: CharacterKey[] = [
+        "backgrounds",
+        "middlegrounds",
+        "bgHood",
         "hairDown",
         "hairUp",
+        "cloaks",
         "bgSkirt",
         "character",
         "lips",
@@ -208,6 +281,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
         "hairBraids",
         "socks",
         "pants",
+        "shoes",
         "skirts",
         "bodice",
         "beltSkirts",
@@ -217,11 +291,24 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
         "tops",
         "topCorset",
         "topCorsetTies",
+        "bodyArmor",
+        "topArmor",
         "arms",
         "armTies",
+        "overShirts",
+        'armArmor',
+        "shoulderArmor",
         "sleeves",
+        "necklaces",
+        "shawls",
+        "cloakTops",
+        "earings",
         "hairEx",
+        "crowns",
         "bangs",
+        "hood",
+        "handHeld",
+        "foregrounds"
     ]
 
     render(): React.ReactNode {
@@ -296,6 +383,21 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 armTies: undefined,
                                 arms: undefined,
                                 sleeves: undefined,
+                                topArmor: undefined,
+                                bodyArmor: undefined,
+                                armArmor: undefined,
+                                shoulderArmor: undefined,
+                                cloaks: undefined,
+                                shoes: undefined,
+                                shawls: undefined,
+                                cloakTops: undefined,
+                                overShirts: undefined,
+                                crowns: undefined,
+                                necklaces: undefined,
+                                earings: undefined,
+                                foregrounds: undefined,
+                                middlegrounds: undefined,
+
                             }
                         })}>Reset</button>
 
