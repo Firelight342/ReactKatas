@@ -3,15 +3,15 @@ import './DressUpGame.css'
 import './DressUpGameColors.css'
 import { ShapeButtonsWithColor } from './ShapeButtonsWithColor';
 import {
-    bangs as bangUrls, bigColorOption, bodice, browUrls, characterUrls,
+    arms,
+    armTies,
+    bangs as bangUrls, belts, beltSkirts, bigColorOption, bodice, browUrls, characterUrls,
     corset,
     corsetTies,
     eyeUrls, fleshColor, hairBraids as hairBraidUrls, hairDown as hairDownUrls, hairEx as hairExUrls, hairUp as hairUpUrls,
-    headHair as headHairUrls, lipColor, lipsUrls, noseUrls, pants, Shape, topCorset, topCorsetTies, tops
+    headHair as headHairUrls, lipColor, lipsUrls, noseUrls, pants, Shape, skirts, sleeves, socks, topCorset, topCorsetTies, tops
 } from './DUGColorAndImgLists';
 import { SelectedShape } from './ImgDisplay';
-
-//type Character = { [key: string]: Shape }
 
 export interface Character {
     name: string
@@ -33,6 +33,13 @@ export interface Character {
     corset?: Shape
     corsetTies?: Shape
     pants?: Shape
+    socks?: Shape
+    skirts?: Shape
+    belts?: Shape
+    beltSkirts?: Shape
+    arms?: Shape
+    armTies?: Shape
+    sleeves?: Shape
 
 }
 
@@ -83,6 +90,15 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                     corsetTies: undefined,
 
                     pants: pants[0],
+                    socks: undefined,
+                    skirts: undefined,
+                    belts: undefined,
+                    beltSkirts: undefined,
+
+                    arms: undefined,
+                    armTies: undefined,
+                    sleeves: undefined,
+
 
                 }
             }
@@ -151,8 +167,17 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             { label: "Corset Ties", key: "corsetTies", itemUrls: corsetTies, colors: bigColorOption } as TrayRendering,
 
         ],
-        "Pants": [
+        "Bottoms": [
             { label: "Pants", key: "pants", itemUrls: pants, colors: bigColorOption } as TrayRendering,
+            { label: "Socks", key: "socks", itemUrls: socks, colors: bigColorOption } as TrayRendering,
+            { label: "Belts", key: "belts", itemUrls: belts, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Belt Skirts", key: "beltSkirts", itemUrls: beltSkirts, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Skirts", key: "skirts", itemUrls: skirts, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+        ],
+        "Arms": [
+            { label: "Arms", key: "arms", itemUrls: arms, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Arm Ties", key: "armTies", itemUrls: armTies, colors: bigColorOption } as TrayRendering,
+            { label: "Sleeves", key: "sleeves", itemUrls: sleeves, colors: bigColorOption } as TrayRendering,
         ]
     };
 
@@ -166,16 +191,22 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
         "eye",
         "headHair",
         "hairBraids",
-        "bangs",
+        "socks",
         "pants",
+        "skirts",
         "bodice",
+        "beltSkirts",
+        "belts",
         "corset",
         "corsetTies",
         "tops",
         "topCorset",
         "topCorsetTies",
+        "arms",
+        "armTies",
+        "sleeves",
         "hairEx",
-
+        "bangs",
     ]
 
     render(): React.ReactNode {
@@ -238,7 +269,14 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 bodice: bodice[0],
                                 corset: undefined,
                                 corsetTies: undefined,
-                                pants: pants[0]
+                                pants: pants[0],
+                                socks: undefined,
+                                skirts: undefined,
+                                beltSkirts: undefined,
+                                belts: undefined,
+                                armTies: undefined,
+                                arms: undefined,
+                                sleeves: undefined,
                             }
                         })}>Reset</button>
 

@@ -6,12 +6,185 @@ export interface ShapeUrl {
     extraLineUrl?: string
     fillUrl?: string
     secondFillUrl?: string
-    bgColorUrl?: string
+    backFillUrl?: string
+    bgPermColorUrl?: string
 }
 export interface Shape extends ShapeUrl {
     color?: string
     color2?: string
 }
+
+export let sleeves: Shape[] = [
+    {
+        outlineUrl: './DUG/sleeves/sleevesOL1.png',
+        fillUrl: './DUG/sleeves/sleevesC1.png',
+    }, {
+        outlineUrl: './DUG/sleeves/sleevesOL2.png',
+        fillUrl: './DUG/sleeves/sleevesC2.png',
+    }, {
+        outlineUrl: './DUG/sleeves/sleevesOL3.png',
+        fillUrl: './DUG/sleeves/sleevesC3.png',
+    }, {
+        outlineUrl: './DUG/sleeves/sleevesOL4.png',
+        fillUrl: './DUG/sleeves/sleevesC4.png',
+    },
+    { outlineUrl: './DUG/blank.png', },
+]
+
+export let armTies: Shape[] = [
+    {
+        outlineUrl: './DUG/arms/armTOL1.png',
+        fillUrl: './DUG/arms/armTC1.png',
+    }, {
+        outlineUrl: './DUG/arms/armTOL2.png',
+        fillUrl: './DUG/arms/armTC2.png',
+    }, {
+        outlineUrl: './DUG/arms/armTOL3.png',
+        fillUrl: './DUG/arms/armTC3.png',
+    },
+    { outlineUrl: './DUG/blank.png', },
+]
+
+export let arms: Shape[] = [
+    {
+        outlineUrl: './DUG/arms/armOL1.png',
+        fillUrl: './DUG/arms/armC1.png', secondFillUrl: './DUG/arms/armSC1.png',
+    }, {
+        outlineUrl: './DUG/arms/armOL2.png',
+        fillUrl: './DUG/arms/armC2.png', secondFillUrl: './DUG/arms/armSC2.png',
+    }, {
+        outlineUrl: './DUG/arms/armOL3.png',
+        fillUrl: './DUG/arms/armC3.png', secondFillUrl: './DUG/arms/armSC3.png',
+    }, {
+        outlineUrl: './DUG/arms/armOL4.png',
+        fillUrl: './DUG/arms/armC4.png', secondFillUrl: './DUG/arms/armSC4.png',
+    }, {
+        outlineUrl: './DUG/arms/armOL5.png',
+        fillUrl: './DUG/arms/armC5.png', secondFillUrl: './DUG/arms/armSC5.png',
+    }, {
+        outlineUrl: './DUG/arms/armOL6.png',
+        fillUrl: './DUG/arms/armC6.png', secondFillUrl: './DUG/arms/armSC6.png',
+    }, {
+        outlineUrl: './DUG/arms/armOL7.png',
+        fillUrl: './DUG/arms/armC7.png', secondFillUrl: './DUG/arms/armSC7.png',
+    }, {
+        outlineUrl: './DUG/arms/armOL8.png',
+        fillUrl: './DUG/arms/armC8.png', secondFillUrl: './DUG/arms/armSC8.png',
+    }, {
+        outlineUrl: './DUG/arms/armOL9.png',
+        fillUrl: './DUG/arms/armC9.png', secondFillUrl: './DUG/arms/armSC9.png',
+    }, {
+        outlineUrl: './DUG/arms/armOL10.png',
+        fillUrl: './DUG/arms/armC10.png', secondFillUrl: './DUG/arms/armSC10.png',
+    }, { outlineUrl: './DUG/blank.png', },
+]
+
+export let beltSkirts: Shape[] = [
+    {
+        outlineUrl: './DUG/belt/beltSkirtOL1.png',
+        fillUrl: './DUG/belt/beltSC1.png', secondFillUrl: './DUG/belt/beltSSC1.png',
+    },
+    {
+        outlineUrl: './DUG/belt/beltSkirtOL2.png',
+        fillUrl: './DUG/belt/beltSC2.png', secondFillUrl: './DUG/belt/beltSSC2.png',
+    },
+    {
+        outlineUrl: './DUG/belt/beltSkirtOL3.png',
+        fillUrl: './DUG/belt/beltSC3.png', secondFillUrl: './DUG/belt/beltSSC3.png',
+    },
+    {
+        outlineUrl: './DUG/belt/beltSkirtOL4.png',
+        fillUrl: './DUG/belt/beltSC4.png', secondFillUrl: './DUG/belt/beltSSC4.png',
+    },
+    {
+        outlineUrl: './DUG/belt/beltSkirtOL5.png',
+        fillUrl: './DUG/belt/beltSC5.png', secondFillUrl: './DUG/belt/beltSSC5.png',
+    },
+    {
+        outlineUrl: './DUG/belt/beltSkirtOL6.png',
+        fillUrl: './DUG/belt/beltSC6.png', secondFillUrl: './DUG/belt/beltSSC6.png',
+    },
+    { outlineUrl: './DUG/blank.png', },
+]
+
+export let belts: Shape[] = [
+    {
+        outlineUrl: './DUG/belt/beltOL1.png',
+        fillUrl: './DUG/belt/beltC.png', secondFillUrl: '',
+    },
+    {
+        outlineUrl: './DUG/belt/beltOL2.png',
+        fillUrl: './DUG/belt/beltC.png', secondFillUrl: './DUG/belt/beltC2.png',
+    },
+    {
+        outlineUrl: './DUG/belt/beltOL3.png',
+        fillUrl: './DUG/belt/beltC.png', secondFillUrl: './DUG/belt/beltC3.png',
+    },
+    {
+        outlineUrl: './DUG/belt/beltOL4.png',
+        fillUrl: './DUG/belt/beltC.png', secondFillUrl: './DUG/belt/beltC4.png',
+    },
+    {
+        outlineUrl: './DUG/belt/beltOL5.png',
+        fillUrl: './DUG/belt/beltC.png', secondFillUrl: './DUG/belt/beltC5.png',
+    },
+    {
+        outlineUrl: './DUG/belt/beltOL6.png',
+        fillUrl: './DUG/belt/beltC.png', secondFillUrl: './DUG/belt/beltC6.png',
+    },
+    { outlineUrl: './DUG/blank.png', },
+]
+export let skirts: Shape[] = [
+    {
+        outlineUrl: './DUG/skirt/skirtOL1.png', bgPermColorUrl: './DUG/skirt/skirtBOL1.png',
+        fillUrl: './DUG/skirt/skirtC1.png', secondFillUrl: './DUG/skirt/skirtSC1.png',
+        backFillUrl: './DUG/skirt/skirtBC1.png'
+    },
+    {
+        outlineUrl: './DUG/skirt/skirtOL2.png', bgPermColorUrl: './DUG/skirt/skirtBOL2.png',
+        fillUrl: './DUG/skirt/skirtC2.png', secondFillUrl: './DUG/skirt/skirtSC2.png',
+        backFillUrl: './DUG/skirt/skirtBC2.png'
+    },
+    {
+        outlineUrl: './DUG/skirt/skirtOL3.png',
+        fillUrl: './DUG/skirt/skirtC3.png', secondFillUrl: './DUG/skirt/skirtSC3.png',
+    },
+    {
+        outlineUrl: './DUG/skirt/skirtOL4.png',
+        fillUrl: './DUG/skirt/skirtC4.png', secondFillUrl: './DUG/skirt/skirtSC4.png',
+    },
+    {
+        outlineUrl: './DUG/skirt/skirtOL5.png',
+        fillUrl: './DUG/skirt/skirtC5.png', secondFillUrl: './DUG/skirt/skirtSC5.png',
+    },
+    {
+        outlineUrl: './DUG/skirt/skirtOL6.png',
+        fillUrl: './DUG/skirt/skirtC6.png', secondFillUrl: './DUG/skirt/skirtSC6.png',
+    },
+    {
+        outlineUrl: './DUG/skirt/skirtOL7.png',
+        fillUrl: './DUG/skirt/skirtC7.png', secondFillUrl: './DUG/skirt/skirtSC7.png',
+    },
+    {
+        outlineUrl: './DUG/skirt/skirtOL8.png',
+        fillUrl: './DUG/skirt/skirtC8.png', secondFillUrl: './DUG/skirt/skirtSC8.png',
+    },
+    {
+        outlineUrl: './DUG/skirt/skirtOL9.png', bgPermColorUrl: './DUG/skirt/skirtBOL9.png',
+        fillUrl: './DUG/skirt/skirtC9.png', secondFillUrl: './DUG/skirt/skirtSC9.png',
+        backFillUrl: './DUG/skirt/skirtBC9.png'
+    },
+    { outlineUrl: './DUG/blank.png', },
+]
+
+export let socks: Shape[] = [
+    { outlineUrl: './DUG/legs/socksOL1.png', fillUrl: "./DUG/legs/socksC1.png" },
+    { outlineUrl: './DUG/legs/socksOL2.png', fillUrl: "./DUG/legs/socksC2.png" },
+    { outlineUrl: './DUG/legs/socksOL3.png', fillUrl: "./DUG/legs/socksC3.png" },
+    { outlineUrl: './DUG/legs/socksOL4.png', fillUrl: "./DUG/legs/socksC4.png" },
+    { outlineUrl: "./DUG/blank.png", fillUrl: "" },
+]
+
 
 export let pants: Shape[] = [
     { outlineUrl: './DUG/legs/pantsOL1.png', fillUrl: "./DUG/legs/pantsC1.png" },
@@ -184,47 +357,47 @@ export let eyeUrls: Shape[] = [
     {
         outlineUrl: './DUG/eyes/eye.png',
         fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
-        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+        bgPermColorUrl: "./DUG/eyes/eyeWhites.png"
     },
     {
         outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash1.png',
         fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
-        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+        bgPermColorUrl: "./DUG/eyes/eyeWhites.png"
     },
     {
         outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash2.png',
         fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
-        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+        bgPermColorUrl: "./DUG/eyes/eyeWhites.png"
     },
     {
         outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash3.png',
         fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
-        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+        bgPermColorUrl: "./DUG/eyes/eyeWhites.png"
     },
     {
         outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash4.png',
         fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
-        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+        bgPermColorUrl: "./DUG/eyes/eyeWhites.png"
     },
     {
         outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash5.png',
         fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
-        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+        bgPermColorUrl: "./DUG/eyes/eyeWhites.png"
     },
     {
         outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash6.png',
         fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
-        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+        bgPermColorUrl: "./DUG/eyes/eyeWhites.png"
     },
     {
         outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash7.png',
         fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
-        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+        bgPermColorUrl: "./DUG/eyes/eyeWhites.png"
     },
     {
         outlineUrl: './DUG/eyes/eye.png', extraLineUrl: './DUG/eyes/eyeLash8.png',
         fillUrl: './DUG/eyes/eyeIris1.png', secondFillUrl: './DUG/eyes/eyeIris2.png',
-        bgColorUrl: "./DUG/eyes/eyeWhites.png"
+        bgPermColorUrl: "./DUG/eyes/eyeWhites.png"
     },
 ];
 
