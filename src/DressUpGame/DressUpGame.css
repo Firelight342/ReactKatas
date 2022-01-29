@@ -3,7 +3,8 @@
 }
 
 .clothesTrayImg {
-    height: 50px;
+    height: 5vmax;
+    width: initial;
     border: 1px solid black;
 }
 

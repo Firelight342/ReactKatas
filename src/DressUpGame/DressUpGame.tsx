@@ -225,6 +225,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             { label: "Arms", key: "arms", itemUrls: arms, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
             { label: "Arm Ties", key: "armTies", itemUrls: armTies, colors: bigColorOption } as TrayRendering,
             { label: "Sleeves", key: "sleeves", itemUrls: sleeves, colors: bigColorOption } as TrayRendering,
+            { label: "Shawls", key: "shawls", itemUrls: shawls, colors: bigColorOption } as TrayRendering,
         ],
         "Bottoms": [
             { label: "Pants", key: "pants", itemUrls: pants, colors: bigColorOption } as TrayRendering,
@@ -239,12 +240,11 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             { label: "Shoulder Armor", key: "shoulderArmor", itemUrls: shoulderArmor, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
             { label: "Arm Armor", key: "armArmor", itemUrls: armArmor, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
         ],
-        "Outerware": [
+        "Outerwear": [
             { label: "Shoes", key: "shoes", itemUrls: shoes, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
             { label: "Over Shirt", key: "overShirts", itemUrls: overShirts, colors: bigColorOption } as TrayRendering,
             { label: "Cloak Tops", key: "cloakTops", itemUrls: cloakTops, colors: bigColorOption } as TrayRendering,
             { label: "Cloaks", key: "cloaks", itemUrls: cloaks, colors: bigColorOption } as TrayRendering,
-            { label: "Shawls", key: "shawls", itemUrls: shawls, colors: bigColorOption } as TrayRendering,
             { label: "Hood", key: "hood", bgKey: "bgHood", itemUrls: hood, colors: bigColorOption } as TrayRendering,
         ],
         "Jewelry": [
