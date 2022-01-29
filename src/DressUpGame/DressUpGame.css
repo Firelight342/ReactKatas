@@ -3,9 +3,9 @@
 }
 
 .clothesTrayImg {
-    height: 5vmax;
+    height: 35px;
     width: initial;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 .clothesTrayImgColor {
@@ -54,7 +54,7 @@
 .traySelector{
     position:absolute;
     width: 210px;
-    height: 68px;
+    height: 80px;
     top:78.2%;
     left: 0;
     bottom: 21.8%;
