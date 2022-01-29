@@ -25,7 +25,7 @@ export class ShapeButtonsWithColor extends React.Component<ShapeButtonProps, any
                         {this.props.itemUrls.length > 1 && this.props.itemUrls.map((shapeUrl: ShapeUrl) => {
                             return (
                                 <img
-                                    src={shapeUrl.outlineUrl}
+                                    src={shapeUrl.iconUrl || shapeUrl.outlineUrl}
                                     className="clothesTrayImg"
                                     onClick={() => {
                                         this.props.onShapeSelect({

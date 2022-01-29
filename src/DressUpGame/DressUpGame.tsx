@@ -140,7 +140,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                     handHeld: undefined,
                     foregrounds: foregrounds[2],
                     middlegrounds: undefined,
-                    backgrounds: backgrounds[7],
+                    backgrounds: backgrounds[6],
 
 
 
@@ -245,7 +245,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
             { label: "Cloak Tops", key: "cloakTops", itemUrls: cloakTops, colors: bigColorOption } as TrayRendering,
             { label: "Cloaks", key: "cloaks", itemUrls: cloaks, colors: bigColorOption } as TrayRendering,
             { label: "Shawls", key: "shawls", itemUrls: shawls, colors: bigColorOption } as TrayRendering,
-            { label: "Hood", key: "hood", bgKey: "bgHood", itemUrls: hood, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Hood", key: "hood", bgKey: "bgHood", itemUrls: hood, colors: bigColorOption } as TrayRendering,
         ],
         "Jewelry": [
             { label: "Crowns", key: "crowns", itemUrls: crowns, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
@@ -254,13 +254,11 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
         ],
         "Effects-Backgrounds": [
             { label: "Hand Effects", key: "handHeld", itemUrls: handHeld, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
-            { label: "Foregrounds", key: "foregrounds", itemUrls: foregrounds, colors: [] } as TrayRendering,
-            { label: "Middlegrounds", key: "middlegrounds", itemUrls: middlegrounds, colors: [] } as TrayRendering,
-            { label: "Backgrounds", key: "backgrounds", itemUrls: backgrounds, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
+            { label: "Fore-grounds", key: "foregrounds", itemUrls: foregrounds, colors: [] } as TrayRendering,
+            { label: "Middle-grounds", key: "middlegrounds", itemUrls: middlegrounds, colors: [] } as TrayRendering,
+            { label: "Back-grounds", key: "backgrounds", itemUrls: backgrounds, colors: bigColorOption, colors2: bigColorOption } as TrayRendering,
 
         ],
-
-
     };
 
     previewPaneDisplayOrder: CharacterKey[] = [
@@ -332,7 +330,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                     {/*Buttons*/}
                     {Object.values(this.trayData).map((trayOptions, index) => {
                         return this.state.openedTray === index &&
-                            <div className="tray">
+                            <div className="tray" style={{ backgroundImage: `url(${'./DUG/panel/panelBackground.png'})` }}>
                                 {
                                     this.renderSideBar(trayOptions)
                                 }
@@ -341,7 +339,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
 
 
                     {/*go to Panel*/}
-                    <span className='traySelector'>
+                    <span className='traySelector' style={{ backgroundImage: `url(${'./DUG/panel/panelBackground.png'})` }}>
                         {Object.keys(this.trayData).map((buttonName, index) =>
                             <button onClick={() => this.setState({ openedTray: index })}>{buttonName}</button>)
                         }
@@ -353,7 +351,9 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                             onChange={(e) => this.setState({ favoriteInput: e.target.value })} />
                         <button onClick={() => this.saveFavorite()} >Save</button>
                         <ul>{this.state.favorites.map(x => this.renderFavoriteListItem(x))}</ul>
+                    </span>
 
+                    <span className="reset">
                         <button onClick={() => this.setState({
                             openedTray: 0,
                             currentCharacter: {
@@ -397,6 +397,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                 earings: undefined,
                                 foregrounds: undefined,
                                 middlegrounds: undefined,
+                                backgrounds: backgrounds[6]
 
                             }
                         })}>Reset</button>
@@ -405,6 +406,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                         <button onClick={() => window.localStorage.clear()}>Clear LocalStorage</button>
                     </span>
                 </div>
+
 
             </>
         )

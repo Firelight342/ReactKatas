@@ -8,6 +8,7 @@ export interface ShapeUrl {
     secondFillUrl?: string
     backFillUrl?: string
     bgPermColorUrl?: string
+    iconUrl?: string
 }
 
 export interface Shape extends ShapeUrl {
@@ -22,7 +23,7 @@ export let backgrounds: Shape[] = [
     { outlineUrl: './DUG/backgrounds/bg4.png' },
     { outlineUrl: './DUG/backgrounds/bg5.png' },
     { outlineUrl: './DUG/backgrounds/bg6.png' },
-    { outlineUrl: './DUG/blank.png', fillUrl: './DUG/backgrounds/bg7.png', secondFillUrl: './DUG/backgrounds/bgC7.png' },
+    { iconUrl: './DUG/panel/blankButton.png', outlineUrl: './DUG/blank.png', fillUrl: './DUG/backgrounds/bg7.png', secondFillUrl: './DUG/backgrounds/bgC7.png', color: "grey" },
 ]
 
 export let middlegrounds: Shape[] = [
@@ -33,7 +34,7 @@ export let middlegrounds: Shape[] = [
     { outlineUrl: './DUG/middlegrounds/mg6.png' },
     { outlineUrl: './DUG/middlegrounds/mg7.png' },
     { outlineUrl: './DUG/middlegrounds/mg8.png' },
-    { outlineUrl: './DUG/blank.png', },
+    { iconUrl: './DUG/panel/blankButton.png', outlineUrl: './DUG/blank.png', },
 ]
 
 export let foregrounds: Shape[] = [
@@ -43,7 +44,7 @@ export let foregrounds: Shape[] = [
     {
         outlineUrl: './DUG/foreground/at2.png',
     },
-    { outlineUrl: './DUG/blank.png', },
+    { iconUrl: './DUG/panel/blankButton.png', outlineUrl: './DUG/blank.png', },
 ]
 
 export let powers: Shape[] = [
@@ -68,7 +69,7 @@ export let powers: Shape[] = [
         fillUrl: './DUG/powers/powersC5.png',
         secondFillUrl: './DUG/powers/powersSC5.png',
     },
-    { outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
+    { iconUrl: './DUG/panel/blankButton.png', outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
 ]
 
 export let handHeld: Shape[] = [
@@ -102,7 +103,7 @@ export let handHeld: Shape[] = [
         fillUrl: './DUG/powers/powersC5.png',
         secondFillUrl: './DUG/powers/powersSC5.png',
     },
-    { outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
+    { iconUrl: './DUG/panel/blankButton.png', outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
 ]
 
 export let earings: Shape[] = [
@@ -119,7 +120,7 @@ export let earings: Shape[] = [
         outlineUrl: './DUG/earings/earingsOL4.png',
         fillUrl: './DUG/earings/earingsC4.png',
     },
-    { outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
+    { iconUrl: './DUG/panel/blankButton.png', outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
 ]
 
 export let necklaces: Shape[] = [
@@ -136,7 +137,7 @@ export let necklaces: Shape[] = [
         outlineUrl: './DUG/necklace/necklaceOL4.png',
         fillUrl: './DUG/necklace/necklaceC4.png', secondFillUrl: './DUG/necklace/necklaceSC4.png',
     },
-    { outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
+    { iconUrl: './DUG/panel/blankButton.png', outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
 ]
 
 export let crowns: Shape[] = [
@@ -153,7 +154,7 @@ export let crowns: Shape[] = [
         outlineUrl: './DUG/crown/crownOL4.png',
         fillUrl: './DUG/crown/crownC4.png', secondFillUrl: './DUG/crown/crownSC4.png',
     },
-    { outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
+    { iconUrl: './DUG/panel/blankButton.png', outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
 ]
 
 export let overShirts: Shape[] = [
@@ -170,7 +171,7 @@ export let overShirts: Shape[] = [
         outlineUrl: './DUG/baggyShirt/baggyShirtOL4.png',
         fillUrl: './DUG/baggyShirt/baggyShirtC4.png',
     },
-    { outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
+    { iconUrl: './DUG/panel/blankButton.png', outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
 ]
 
 
@@ -188,7 +189,7 @@ export let shawls: Shape[] = [
         outlineUrl: './DUG/shawls/shawlsOL4.png',
         fillUrl: './DUG/shawls/shawlsC4.png',
     },
-    { outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
+    { iconUrl: './DUG/panel/blankButton.png', outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
 ]
 
 
@@ -198,7 +199,7 @@ export let hood: Shape[] = [
         fillUrl: './DUG/hood/hoodC.png',
         backFillUrl: './DUG/hood/hoodBackC.png'
     },
-    { outlineUrl: './DUG/blank.png', fillUrl: "", bgPermColorUrl: '', backFillUrl: './DUG/blank.png' },
+    { iconUrl: './DUG/panel/blankButton.png', outlineUrl: './DUG/blank.png', fillUrl: "", bgPermColorUrl: '', backFillUrl: './DUG/blank.png' },
 ]
 
 export let cloakTops: Shape[] = [
@@ -212,9 +213,9 @@ export let cloakTops: Shape[] = [
         outlineUrl: './DUG/capes/shoulderWrapOL3.png',
         fillUrl: './DUG/capes/shoulderWrapC3.png',
     },
-    { outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
+    { iconUrl: './DUG/panel/blankButton.png', outlineUrl: './DUG/blank.png', fillUrl: "", secondFillUrl: "" },
 ]
-
+//START HERE
 export let cloaks: Shape[] = [
     {
         outlineUrl: './DUG/capes/capeOL1.png',

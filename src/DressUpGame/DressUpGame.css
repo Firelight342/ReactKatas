@@ -2,50 +2,61 @@
     height: 50px;
 }
 
-.tray {
-    width: 200px;
-    position:static;
-    top: 0x;
-    bottom: 500px;
-    left: 0px;
-    border: 1px solid rgb(255, 0, 0);
-}
-
-.traySelector{
-    width: 200px;
-    position:absolute;
-    left: 0px;
-    border: 1px solid rgb(81, 0, 255);
-}
-
 .clothesTrayImg {
-    width: 50px;
+    height: 50px;
     border: 1px solid black;
 }
 
 .clothesTrayImgColor {
-    height: 20px;
-    border: 1px solid rgb(0, 0, 0);
+    height: 25px;
+    /*border: 1px solid rgb(0, 0, 0);
+    
+    */
 }
 
-.star{
-    position: absolute;
-    top: 10px;
-    left: 250px;
-    flex-wrap: wrap;
-}
 .input{
     position:absolute;
-    top: 631px;
-    left: 201px; /*760*/
-    flex-wrap: wrap;
-    /*border: 1px solid black;*/
+    top:95.5%;
+    /*975px*/
+    left: 10px;
 }
-.body{
-    height: 530px; /*630*/
+
+.reset{
     position:absolute;
-    top: 0px;
-    left: 201px; 
-    flex-wrap: wrap;
-    border: 1px solid black;
+    top:95.5%;
+    /*975px*/
+    left: 220px;
 }
+
+.body{  
+    position:absolute;
+    height: 88%; /*630*/
+    left: 213px; 
+    top:0%;
+    bottom: 22%;
+    overflow-y: auto;
+    flex-wrap: wrap;
+}
+
+.tray {
+    position:absolute;
+    word-wrap: break-word;
+    overflow-y: auto;
+    width: 210px;
+    height: 78.2%;
+    top: 0%;
+    bottom: 80%;
+    left: 0; 
+    border: 2px solid black;
+}
+
+.traySelector{
+    position:absolute;
+    width: 210px;
+    height: 68px;
+    top:78.2%;
+    left: 0;
+    bottom: 21.8%;
+    border: 2px solid black;
+}
+
