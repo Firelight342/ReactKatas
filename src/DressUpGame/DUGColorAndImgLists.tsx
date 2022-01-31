@@ -790,12 +790,12 @@ export let characterUrls: Shape[] = [
 ]
 
 export let lipsUrls: Shape[] = [
-    { iconUrl: './DUG/panel/lips/lipButton1.png', outlineUrl: './DUG/lips/lipsOL1.png', fillUrl: "./DUG/lips/lipsC1.png", color: "grey" },
-    { iconUrl: './DUG/panel/lips/lipButton2.png', outlineUrl: './DUG/lips/lipsOL2.png', fillUrl: "./DUG/lips/lipsC2.png", color: "grey" },
-    { iconUrl: './DUG/panel/lips/lipButton3.png', outlineUrl: './DUG/lips/lipsOL3.png', fillUrl: "./DUG/lips/lipsC3.png", color: "grey" },
-    { iconUrl: './DUG/panel/lips/lipButton4.png', outlineUrl: './DUG/lips/lipsOL4.png', fillUrl: "./DUG/lips/lipsC4.png", color: "grey" },
-    { iconUrl: './DUG/panel/lips/lipButton5.png', outlineUrl: './DUG/lips/lipsOL5.png', fillUrl: "./DUG/lips/lipsC5.png", color: "grey" },
-    { iconUrl: './DUG/panel/lips/lipButton6.png', outlineUrl: './DUG/lips/lipsOL6.png', fillUrl: "./DUG/lips/lipsC6.png", color: "grey" },
+    { iconUrl: './DUG/panel/lips/lipButton1.png', outlineUrl: './DUG/lips/lipsOL1.png', fillUrl: "./DUG/lips/lipsC1.png" },
+    { iconUrl: './DUG/panel/lips/lipButton2.png', outlineUrl: './DUG/lips/lipsOL2.png', fillUrl: "./DUG/lips/lipsC2.png" },
+    { iconUrl: './DUG/panel/lips/lipButton3.png', outlineUrl: './DUG/lips/lipsOL3.png', fillUrl: "./DUG/lips/lipsC3.png" },
+    { iconUrl: './DUG/panel/lips/lipButton4.png', outlineUrl: './DUG/lips/lipsOL4.png', fillUrl: "./DUG/lips/lipsC4.png" },
+    { iconUrl: './DUG/panel/lips/lipButton5.png', outlineUrl: './DUG/lips/lipsOL5.png', fillUrl: "./DUG/lips/lipsC5.png" },
+    { iconUrl: './DUG/panel/lips/lipButton6.png', outlineUrl: './DUG/lips/lipsOL6.png', fillUrl: "./DUG/lips/lipsC6.png" },
 ];
 
 export let noseUrls: Shape[] = [
