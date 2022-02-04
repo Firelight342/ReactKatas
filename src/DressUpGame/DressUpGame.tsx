@@ -1,6 +1,7 @@
 import React from 'react';
 import './DressUpGame.css'
 import './DressUpGameColors.css'
+
 import { ShapeButtonsWithColor } from './ShapeButtonsWithColor';
 import {
     armArmor,
@@ -10,65 +11,12 @@ import {
     corset,
     corsetTies,
     eyeUrls, fleshColor, hairBraids as hairBraidUrls, hairDown as hairDownUrls, hairEx as hairExUrls, hairUp as hairUpUrls,
-    headHair as headHairUrls, lipColor, lipsUrls, noseUrls, pants, Shape, shawls, shoes, shoulderArmor, skirts, sleeves,
+    headHair as headHairUrls, lipColor, lipsUrls, noseUrls, pants, shawls, shoes, shoulderArmor, skirts, sleeves,
     socks, topArmor, topCorset, topCorsetTies, tops, cloakTops, overShirts, hood, crowns, necklaces, earings, handHeld, foregrounds, backgrounds, middlegrounds
 } from './DUGColorAndImgLists';
 import { Frame, SelectedShape } from './ImgDisplay';
-
-export interface Character {
-    name: string
-    character?: Shape
-    lips?: Shape
-    nose?: Shape
-    brow?: Shape
-    eye?: Shape
-    bangs?: Shape
-    headHair?: Shape
-    hairEx?: Shape
-    hairUp?: Shape
-    hairDown?: Shape
-    hairBraids?: Shape
-    tops?: Shape
-    topCorset?: Shape
-    topCorsetTies?: Shape
-    bodice?: Shape
-    corset?: Shape
-    corsetTies?: Shape
-    pants?: Shape
-    socks?: Shape
-    skirts?: Shape
-    belts?: Shape
-    beltSkirts?: Shape
-    arms?: Shape
-    armTies?: Shape
-    sleeves?: Shape
-    bgSkirt?: Shape
-    eyeWhites?: Shape
-    topArmor?: Shape
-    bodyArmor?: Shape
-    armArmor?: Shape
-    shoulderArmor?: Shape
-    shoes?: Shape
-    cloaks?: Shape
-    shawls?: Shape
-    cloakTops?: Shape
-    overShirts?: Shape
-    hood?: Shape
-    bgHood?: Shape
-    crowns?: Shape
-    necklaces?: Shape
-    earings?: Shape
-    handHeld?: Shape
-    foregrounds?: Shape
-    middlegrounds?: Shape
-    backgrounds?: Shape
-
-}
-
-type CharacterKey = keyof Character
-interface TrayRendering {
-    label: string, key: CharacterKey, itemUrls: Shape[], colors: string[], colors2?: string[], bgKey?: CharacterKey
-}
+import { Character, CharacterKey, TrayRendering, Shape } from './Types';
+import { SideBar } from './SideBar';
 
 export interface DU1State {
     favoriteInput: string
@@ -147,33 +95,6 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                 }
             }
         }
-    }
-
-    renderSideBar(trayOptions: TrayRendering[]) {
-        return trayOptions.map(({ label, key, itemUrls, colors, colors2, bgKey }) =>
-            <ShapeButtonsWithColor
-                itemName={label}
-                itemUrls={itemUrls}
-                onShapeSelect={(shape: Shape) => {
-                    //console.log(shape);
-                    let extraBgInfo = {}
-                    if ((shape.backFillUrl || shape.bgPermColorUrl) && bgKey) {
-                        extraBgInfo = {
-                            [bgKey]:
-                                {
-                                    color: shape.color,
-                                    outlineUrl: shape.bgPermColorUrl,
-                                    fillUrl: shape.backFillUrl,
-                                } as Shape
-                        }
-                    }
-                    this.setState({ currentCharacter: { ...this.state.currentCharacter, [key]: shape, ...extraBgInfo } })
-                }}
-                selectableColors={colors}
-                secondSelectableColors={colors2}
-                selectedShape={this.state.currentCharacter[key] as Shape}
-            />
-        )
     }
 
     renderFavoriteListItem(favorite: Character): React.ReactNode {
@@ -309,6 +230,44 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
         "foregrounds"
     ]
 
+    /*
+                               DressUpGame  (character)
+ShapeButtonsWithColor (settingCharacter)               SideBar    (labels:string[], children:any[], trayOpen)             
+ColorButtons (settingCharacter)                        ItemTray (trayOpen)
+    */
+
+    renderSideBar(trayOptions: TrayRendering[]) {
+        let labels = trayOptions.map(({ label }) => label);
+        return (
+            <SideBar labels={labels} >
+                {trayOptions.map(({ key, itemUrls, colors, colors2, bgKey }) =>
+                    <ShapeButtonsWithColor
+                        itemUrls={itemUrls}
+                        onShapeSelect={(shape: Shape) => {
+                            let extraBgInfo = {}
+                            if ((shape.backFillUrl || shape.bgPermColorUrl) && bgKey) {
+                                extraBgInfo = {
+                                    [bgKey]:
+                                        {
+                                            color: shape.color,
+                                            outlineUrl: shape.bgPermColorUrl,
+                                            fillUrl: shape.backFillUrl,
+                                        } as Shape
+                                }
+                            }
+                            this.setState({ currentCharacter: { ...this.state.currentCharacter, [key]: shape, ...extraBgInfo } })
+                        }}
+                        selectableColors={colors}
+                        secondSelectableColors={colors2}
+                        selectedShape={this.state.currentCharacter[key] as Shape}
+                    />
+                )
+                }
+            </SideBar>
+        );
+
+    }
+
     render(): React.ReactNode {
         console.log(this.state.currentCharacter)
         return (
@@ -322,6 +281,7 @@ export class DressUpGameTryingStuff extends React.Component<any, DU1State> {
                                     console.log("rendering: ", key, this.state.currentCharacter[key]);
                                     return (<SelectedShape frame={this.state.currentCharacter[key] as Frame} />)
                                 }
+                                return undefined;
                             }
                             )}
 

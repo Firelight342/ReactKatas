@@ -18,10 +18,10 @@ export class SelectedShape extends React.Component<{ frame: Frame }, {}> {
         return (
 
             <div>
-                <img src={this.props.frame.fillUrl} className={this.props.frame.color + " body"} />
-                <img src={this.props.frame.secondFillUrl} className={this.props.frame.color2 + " body"} />
-                <img src={this.props.frame.extraLineUrl} className="body " />
-                <img src={this.props.frame.outlineUrl} className="body " />
+                <img alt="" src={this.props.frame.fillUrl} className={this.props.frame.color + " body"} />
+                <img alt="" src={this.props.frame.secondFillUrl} className={this.props.frame.color2 + " body"} />
+                <img alt="" src={this.props.frame.extraLineUrl} className="body " />
+                <img alt="" src={this.props.frame.outlineUrl} className="body " />
             </div>
         )
     }

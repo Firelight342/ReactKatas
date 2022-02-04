@@ -18,6 +18,7 @@ export class ColorButtons extends React.Component<ColorButtonProps, {}>{
                     return (
                         <>
                             <img
+                                alt="test"
                                 src={"./DUG/panel/colorButtonOL.png"}
                                 onClick={() => {
                                     this.props.onClick(color)

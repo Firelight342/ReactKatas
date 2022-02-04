@@ -1,20 +1,6 @@
 import './DressUpGame.css'
 import './DressUpGameColors.css'
-
-export interface ShapeUrl {
-    outlineUrl?: string
-    extraLineUrl?: string
-    fillUrl?: string
-    secondFillUrl?: string
-    backFillUrl?: string
-    bgPermColorUrl?: string
-    iconUrl?: string
-}
-
-export interface Shape extends ShapeUrl {
-    color?: string
-    color2?: string
-}
+import { Shape } from './Types'
 
 export let backgrounds: Shape[] = [
     { iconUrl: './DUG/panel/grounds/b1.png', outlineUrl: './DUG/backgrounds/bg1.png' },
