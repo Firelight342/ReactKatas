@@ -249,7 +249,7 @@ ColorButtons (settingCharacter)                        ItemTray (trayOpen)
                                 extraBgInfo = {
                                     [bgKey]:
                                         {
-                                            color: shape.color,
+                                            color: shape.color2,
                                             outlineUrl: shape.bgPermColorUrl,
                                             fillUrl: shape.backFillUrl,
                                         } as Shape

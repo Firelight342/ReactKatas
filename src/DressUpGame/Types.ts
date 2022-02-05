@@ -1,5 +1,3 @@
-
-
 export interface ShapeUrl {
     outlineUrl?: string
     extraLineUrl?: string
@@ -66,6 +64,7 @@ export interface Character {
 }
 
 export type CharacterKey = keyof Character
+
 export interface TrayRendering {
     label: string, key: CharacterKey, itemUrls: Shape[], colors: string[], colors2?: string[], bgKey?: CharacterKey
 }
